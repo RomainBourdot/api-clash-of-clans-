@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Clans</title>
+</head>
+<body>
+    <h1>Liste des Clans</h1>
+    <ul>
+        {{range .Clans}}
+        <li>
+            <strong>{{.Name}}</strong> ({{.Tag}})<br>
+            Niveau: {{.Level}}, Points: {{.Points}}, Membres: {{.MemberCount}}<br>
+            Guerres: {{.WarWins}} Victoires, {{.WarLosses}} Défaites
+        </li>
+        {{end}}
+    </ul>
+</body>
+</html>
