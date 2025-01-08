@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "tag": "#2QC2RU8RP",
+            "name": "Test",
+            "type": "open",
+            "badgeUrls": {
+                "medium": "https://api-assets.clashofclans.com/badges/200/F2qFbmVeNZbnvM3pqg5R9ec4EIly5PjNG0Wi5_YZF3c.png"
+            },
+            "clanLevel": 5,
+            "clanPoints": 15731,
+            "capitalLeague": {
+                "name": "Unranked"
+            },
+            "warWinStreak": 0,
+            "warWins": 22,
+            "warTies": 1,
+            "warLosses": 5,
+            "warLeague": {
+                "name": "Gold League III"
+            },
+            "members": 24,
+            "labels": [
+                {
+                    "name": "Clan Wars",
+                    "iconUrls": {
+                        "medium": "https://api-assets.clashofclans.com/labels/128/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png"
+                    }
+                }
+            ]
+        },
+        ...
+    ]
+}

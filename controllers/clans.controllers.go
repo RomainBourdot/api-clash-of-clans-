@@ -7,15 +7,16 @@ import (
 	"net/http"
 )
 
-func pageListClans(w http.ResponseWriter, r *http.Request) {
-	listClans, listClansCode, listClansErr := services.GetClan()
+func ListClans(w http.ResponseWriter, r *http.Request) {
+	listClans, err := services.GetClanByTag("test")
 	// Vérification d'une erreur dans la réponse de l'api
-	if listClansErr != nil {
+	if err != nil {
 		// Redirection vers la page d'erreur en cas d'erreur dans la réponse
-		http.Redirect(w, r, fmt.Sprintf("/error?code=%d&message=Erreur lors de la récupération des clans", listClansCode), http.StatusPermanentRedirect)
+		http.Redirect(w, r, fmt.Sprintf("/error?code=%d&message=%s", http.StatusPermanentRedirect, err.Error()), http.StatusPermanentRedirect)
 		return
 	}
-	// Chargement et rendue du template "albums" avec les données de l'API
+	fmt.Println(listClans)
+	// Chargement et rendue du template "clans" avec les données de l'API
 	// Envoie de la réponse au client
 	temp.Temp.ExecuteTemplate(w, "clans", listClans)
 }

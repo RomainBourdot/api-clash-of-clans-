@@ -10,8 +10,8 @@ import (
 func InitServe() {
 	// Récuperation des routes
 	AccueilRoutes()
-	errorRoutes()
-	AccueilRoutes()
+	ErrorRoutes()
+	ClansRoutes()
 
 	// Initialisation du serveur HTTP
 	// à l'écoute sur le port 8080 du localhost de la machine

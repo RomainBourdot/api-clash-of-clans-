@@ -5,37 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./static/accueil.css">
 </head>
 <body>
     <header>
-        <h1><img src="logo clash or clans " alt=""></h1>
-    </header>
+        <div class="right-header">
+            <ul>
+                <li><a href="/clans">Clans</a></li>
+                <li><a href="/about">À propos</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>  
     <main>
         <div class="title-container">
-            <h1>
-                Bienvenue sur l'API clash of Clans !
-            </h1>
+            <h1>Bienvenue sur l'API Clash of Clans !</h1>
         </div>
-        <form action="/research">
-            <div class="search-bar">
-                <svg xmlns="http://www.w3.org/2000/svg"height="28px" viewBox="0 -960 960 960" width="28px"
-                    fill="#777777" id="search-bar-svg">
-                    <path
-                        d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
-                </svg>
-                <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
+
+        <form action="/research" method="GET">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
+                </div>
+                <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
             </div>
+
+            <div class="filters" id="filters" style="display: none;">
+                <label>
+                    <input type="checkbox" name="active" value="true"> Actifs
+                </label>
+                <label>
+                    <input type="checkbox" name="war-focused" value="true"> Axé sur les guerres
+                </label>
+                <label>
+                    <input type="checkbox" name="friendly" value="true"> Clans amicaux
+                </label>
+            </div>
+
+            <button type="submit" class="search-btn">Rechercher</button>
         </form>
     </main>
     <footer>
-        <p>&copy; <img src="img.logo clash of clans  " alt=""></p>
-        <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/about">A propos</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
+        <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        // Script pour gérer l'affichage des filtres
+        const filterToggle = document.getElementById('filter-toggle');
+        const filters = document.getElementById('filters');
+
+        filterToggle.addEventListener('click', () => {
+            filters.style.display = filters.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
 </body>
 </html>
 {{end}}

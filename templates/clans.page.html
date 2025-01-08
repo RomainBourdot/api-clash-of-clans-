@@ -1,18 +1,39 @@
+{{define "clans"}}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Liste des Clans</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+    <link rel="stylesheet" href="./static/clans.css">
 </head>
 <body>
-    <h1>Liste des Clans</h1>
-    <ul>
-        {{range .Clans}}
-        <li>
-            <strong>{{.Name}}</strong> ({{.Tag}})<br>
-            Niveau: {{.Level}}, Points: {{.Points}}, Membres: {{.MemberCount}}<br>
-            Guerres: {{.WarWins}} Victoires, {{.WarLosses}} Défaites
-        </li>
-        {{end}}
-    </ul>
+    <header>
+        <h1><img src="logo clash or clans " alt=""></h1>
+    </header>
+    <main>
+        <div class="title-container">
+            <h1>
+                API clash of Clans !
+            </h1>
+        </div>
+        <div class="container">
+        
+        </div>
+        <form action="/research">
+            <div class="search-bar">
+                <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
+            </div>
+            <p>&copy; <img src="img.logo clash of clans  " alt=""></p>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/about">A propos</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        </form>
+    </main>
+    <footer>
+    </footer>
 </body>
 </html>
+{{end}}
