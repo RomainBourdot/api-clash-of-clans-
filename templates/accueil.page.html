@@ -21,7 +21,7 @@
         <div class="title-container">
             <h1>Bienvenue sur l'API Clash of Clans !</h1>
         </div>
-
+        
         <form action="/research" method="GET">
             <div class="search-container">
                 <div class="search-bar">
@@ -32,13 +32,10 @@
 
             <div class="filters" id="filters" style="display: none;">
                 <label>
-                    <input type="checkbox" name="active" value="true"> Actifs
+                    <input type="radio" name="type" value="clans" checked> Clans
                 </label>
                 <label>
-                    <input type="checkbox" name="war-focused" value="true"> Axé sur les guerres
-                </label>
-                <label>
-                    <input type="checkbox" name="friendly" value="true"> Clans amicaux
+                    <input type="radio" name="type" value="players"> Joueurs
                 </label>
             </div>
 
@@ -50,7 +47,7 @@
     </footer>
 
     <script>
-        // Script pour gérer l'affichage des filtres
+
         const filterToggle = document.getElementById('filter-toggle');
         const filters = document.getElementById('filters');
 

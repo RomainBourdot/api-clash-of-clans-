@@ -5,35 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
-    <link rel="stylesheet" href="./static/clans.css">
+    <link rel="stylesheet" href="/static/clans.css">
 </head>
 <body>
     <header>
-        <h1><img src="logo clash or clans " alt=""></h1>
-    </header>
+        <div class="right-header">
+            <ul>
+                <li><a href="/clans">Clans</a></li>
+                <li><a href="/about">À propos</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>  
     <main>
         <div class="title-container">
-            <h1>
-                API clash of Clans !
-            </h1>
+            <h1>Bienvenue sur l'API Clash of Clans !</h1>
         </div>
-        <div class="container">
         
-        </div>
-        <form action="/research">
-            <div class="search-bar">
-                <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
+        <form action="/research" method="GET">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
+                </div>
+                <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
             </div>
-            <p>&copy; <img src="img.logo clash of clans  " alt=""></p>
-        <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/about">A propos</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
+
+            <div class="filters" id="filters" style="display: none;">
+                <label>
+                    <input type="checkbox" name="active" value="true"> Clans
+                </label>
+                <label>
+                    <input type="checkbox" name="war-focused" value="true"> Joueurs
+                </label>
+                <label>
+                    <input type="checkbox" name="friendly" value="true"> War
+                </label>
+            </div>
+
+            <button type="submit" class="search-btn">Rechercher</button>
         </form>
+        <div class="wrapper">
+            {{range .Items}}
+            <h2>{{.Name}}</h2>
+            <img src="{{.BadgeUrl.Medium}}" alt="...">
+
+            {{range .Label}}
+            <p>{{.Name}}</p>
+            <img src="{{.IconUrls.Medium}}" alt="...">
+            {{end}}
+            
+        {{end}}
+        </div>
     </main>
     <footer>
+        <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
     </footer>
+
+    <script>
+
+        const filterToggle = document.getElementById('filter-toggle');
+        const filters = document.getElementById('filters');
+
+        filterToggle.addEventListener('click', () => {
+            filters.style.display = filters.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
 </body>
 </html>
 {{end}}

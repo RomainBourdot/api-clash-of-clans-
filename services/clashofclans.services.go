@@ -12,112 +12,7 @@ var _httpClient = http.Client{
 	Timeout: 5 * time.Second,
 }
 
-// Valeur par défaut pour éviter l'erreur 400 due à un problème de format, type...
-var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjU2ODE3MmMyLTYxNTYtNDg3YS05ZDg5LWM4ZTI0NDE0NmUyNyIsImlhdCI6MTczNjE1MTQyNiwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjU0Ljg2LjUwLjEzOSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.0sycKTjSSuffRIQ1B0DNqZXzRkLOgmBo4nPFCohjYhljIcq4_i2mFAybwHjgspDKAbqDeOC1Uxck1y8ubXd0zA"
-
-func GetClan(url string) (*http.Response, error) {
-	fmt.Printf("valeur token : %s\n", _token)
-	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
-	if reqErr != nil {
-		return nil, fmt.Errorf("Erreur lors de l'initialisation de la réquête")
-	}
-
-	req.Header.Set("Authorization", _token)
-
-	res, resErr := _httpClient.Do(req)
-	if resErr != nil {
-		return nil, fmt.Errorf("Erreur lors de l'envois de la réquête")
-	}
-	return res, nil
-}
-
-/* type Clan struct {
-	Tag              string   `json:"tag"`
-	Name             string   `json:"name"`
-	Type             string   `json:"type"`
-	Description      string   `json:"description"`
-	Location         Location `json:"location"`
-	BadgeUrl         BadgeUrl `json:"badgeUrls"`
-	Level            int      `json:"clanLevel"`
-	Points           int32    `json:"clanPoints"`
-	VersusPoints     int32    `json:"clanVersusPoints"`
-	RequiredTrophies int      `json:"requiredTrophies"`
-	WarFrequency     string   `json:"warFrequency"`
-	WarWinStreak     int      `json:"warWinStreak"`
-	WarWins          int      `json:"warWins"`
-	WarTies          int      `json:"warTies"`
-	WarLosses        int      `json:"warLosses"`
-	IsWarLogPublic   bool     `json:"isWarLogPublic"`
-	MemberCount      int      `json:"members"`
-	Members          []Member `json:"memberList"`
-	Labels           []Label  `json:"labels"`
-}
-
-// BadgeUrl holds the URL to badge images in various sizes
-type BadgeUrl struct {
-	Small  string `json:"small"`
-	Medium string `json:"medium"`
-	Large  string `json:"large"`
-}
-
-// Member holds information about a clan member
-type Member struct {
-	Tag               string `json:"tag"`
-	Name              string `json:"name"`
-	Role              string `json:"role"`
-	ExpLevel          int    `json:"expLevel"`
-	League            League `json:"league"`
-	Trophies          int    `json:"trophies"`
-	VersusTrophies    int    `json:"versusTrophies"`
-	Rank              int    `json:"clanRank"`
-	PreviousRank      int    `json:"previousClanRank"`
-	Donations         int    `json:"donations"`
-	DonationsReceived int    `json:"donationsReceived"`
-}
-
-
-type Location struct {
-	ID        int    `json:"id"`
-	Name      string `json:"name"`
-	IsCountry bool   `json:"isCountry"`
-}
-
-type League struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Icon string `json:"iconUrls"`
-}
-
-type Label struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Icon string `json:"iconUrls"`
-}
-
-type War struct {
-	Result   string  `json:"result"`
-	Clan     WarClan `json:"clan"`
-	Opponent WarClan `json:"opponent"`
-}
-
-type WarClan struct {
-	Tag                   string      `json:"tag"`
-	Name                  string      `json:"name"`
-	BadgeUrl              BadgeUrl    `json:"badgeUrls"`
-	Level                 int         `json:"clanLevel"`
-	Attacks               int         `json:"attacks"`
-	Stars                 int         `json:"stars"`
-	DestructionPercentage float32     `json:"destructionPercentage"`
-	Team                  []WarMember `json:"members"`
-}
-
-type WarMember struct {
-	Tag      string `json:"tag"`
-	Name     string `json:"name"`
-	Stars    int    `json:"stars"`
-	Attacks  int    `json:"attacks"`
-	ExpLevel int    `json:"expLevel"`
-} */
+var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjUwYjdjM2Q5LTIzY2MtNDgwNi05NjhlLTEzOThiMDk5MDQxMCIsImlhdCI6MTczNjc1NDE1Mywic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.uMdtFNZjY9GxXMwOhR_bkteJYtxHZ_59GS55M2MiHLqsaXyZabWDLfhep0hktgR4ZB-XLcJdB7zPqKFV6e7Hhw"
 
 type ShearchClan struct {
 	Items []struct {
@@ -140,17 +35,23 @@ type ShearchClan struct {
 			Name string `json:"name"`
 		} `json:"warLeague"`
 		Members int `json:"members"`
+		Label   []struct {
+			Name     string `json:"name"`
+			IconUrls struct {
+				Medium string `json:"medium"`
+			} `json:"iconUrls"`
+		} `json:"labels"`
 	} `json:"items"`
-	Label []struct {
-		Name     string `json:"name"`
-		IconUrls struct {
-			Medium string `json:"medium"`
-		}
-	}
 }
 
-func GetClanByTag(name string) (ShearchClan, error) {
-	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans?name=%s", name)
+type ErrorClient struct {
+	Reason  string `json:"reason"`
+	Message string `json:"message"`
+	Type    string `json:"type"`
+}
+
+func GetClanByQuery(query string) (ShearchClan, error) {
+	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans?name=%s", query)
 
 	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
 	if reqErr != nil {
@@ -158,6 +59,7 @@ func GetClanByTag(name string) (ShearchClan, error) {
 	}
 
 	req.Header.Set("Authorization", _token)
+	req.Header.Set("Accept", "application/json")
 
 	res, resErr := _httpClient.Do(req)
 	if resErr != nil {
@@ -166,7 +68,15 @@ func GetClanByTag(name string) (ShearchClan, error) {
 
 	defer res.Body.Close()
 
+	fmt.Println(res.StatusCode)
+
 	if res.StatusCode != http.StatusOK {
+		var data ErrorClient
+		errDecode := json.NewDecoder(res.Body).Decode(&data)
+		if errDecode != nil {
+			return ShearchClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
+		}
+		fmt.Println(data)
 		return ShearchClan{}, fmt.Errorf("Erreur lors de la récupération des clans : \n Code : %d\n Message : %s", res.StatusCode, res.Status)
 	}
 
@@ -175,5 +85,109 @@ func GetClanByTag(name string) (ShearchClan, error) {
 	if errDecode != nil {
 		return ShearchClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
 	}
+	fmt.Println("DATA ==> ", data)
+	return data, nil
+}
+
+type DetailsClan struct {
+	Item []struct {
+		Tag         string `json:"tag"`
+		Name        string `json:"name"`
+		TypeClan    string `json:"type"`
+		Description string `json:"description"`
+		Location    struct {
+			Name string `json:"name"`
+		} `json:"location"`
+		BadgeUrl struct {
+			Medium string `json:"medium"`
+		} `json:"badgeUrls"`
+		ClanLevel             int `json:"clanLevel"`
+		ClanPoints            int `json:"clanPoints"`
+		ClanBuilderBasePoints int `json:"clanBuilderBasePoints"`
+		ClanCapitalPoints     int `json:"clanCapitalPoints"`
+		CapitalLeague         struct {
+			Name string `json:"name"`
+		} `json:"capitalLeague"`
+		RequiredTrophies int    `json:"requiredTrophies"`
+		WarFrequency     string `json:"warFrequency"`
+		WarWinStreak     int    `json:"warWinStreak"`
+		WarWins          int    `json:"warWins"`
+		WarTies          int    `json:"warTies"`
+		WarLosses        int    `json:"warLosses"`
+		Warleague        struct {
+			Name string `json:"name"`
+		} `json:"warLeague"`
+		Members     int `json:"members"`
+		MembersList []struct {
+			Name          string `json:"name"`
+			Role          string `json:"role"`
+			TownHallLevel int    `json:"townHallLevel"`
+			ExpLevel      int    `json:"expLevel"`
+			League        struct {
+				Name      string `json:"name"`
+				iconsUrls struct {
+					Medium string `json:"medium"`
+				} `json:"iconsUrls"`
+			} `json:"league"`
+			Trophies            int `json:"trophies"`
+			BuilderBaseTrophies int `json:"builderBaseTrophies"`
+			Donations           int `json:"donations"`
+			DonationsReceived   int `json:"donationsReceived"`
+		} `json:"members"`
+		Labels []struct {
+			Name     string `json:"name"`
+			IconUrls struct {
+				Medium string `json:"medium"`
+			} `json:"iconUrls"`
+		} `json:"labels"`
+		RequiredBuilderBaseTrophies int `json:"requiredBuilderBaseTrophies"`
+		RequieredTownHallLevel      int `json:"requiredTownHallLevel"`
+		ClanCapital                 struct {
+			CapitalHallLevel int `json:"capitalHallLevel"`
+			Districts        []struct {
+				Name              string `json:"name"`
+				DistrictHallLevel int    `json:"districtHallLevel"`
+			} `json:"districts"`
+		} `json:"clanCapital"`
+	} `json:"items"`
+}
+
+func GetClanByTag(tag string) (DetailsClan, error) {
+	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans/%%23%s", tag)
+	fmt.Println(url)
+
+	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
+	if reqErr != nil {
+		return DetailsClan{}, fmt.Errorf("Erreur lors de l'initialisation de la réquête")
+	}
+
+	req.Header.Set("Authorization", _token)
+	req.Header.Set("Accept", "application/json")
+
+	res, resErr := _httpClient.Do(req)
+	if resErr != nil {
+		return DetailsClan{}, fmt.Errorf("Erreur lors de l'envois de la réquête")
+	}
+
+	defer res.Body.Close()
+
+	fmt.Println(res.StatusCode)
+
+	if res.StatusCode != http.StatusOK {
+		var data ErrorClient
+		errDecode := json.NewDecoder(res.Body).Decode(&data)
+		if errDecode != nil {
+			return DetailsClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
+		}
+		fmt.Println(data)
+		return DetailsClan{}, fmt.Errorf("Erreur lors de la récupération des clans : \n Code : %d\n Message : %s", res.StatusCode, res.Status)
+	}
+
+	var data DetailsClan
+	errDecode := json.NewDecoder(res.Body).Decode(&data)
+	if errDecode != nil {
+		return DetailsClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
+	}
+	fmt.Println("DATA ==> ", data)
 	return data, nil
 }

@@ -1,34 +1,67 @@
 {
-    "items": [
+    "tag": "#2QQCQY0PV",
+    "name": "Test",
+    "type": "inviteOnly",
+    "description": "We are the greatest ****** clan in the world and it isn’t even close. We’re at the tippity top of the mountain and we’re only halfway up. Even when we lose we hav***** better facial hair and good looks than our enemy. If you no join you have ***** **",
+    "location": {
+        "name": "United States"
+    },
+    "badgeUrls": {
+        "medium": "https://api-assets.clashofclans.com/badges/200/fXUc2t8gP9r1fVib77CcE3EUrAEvdp_Ss9wjn2FQRIQ.png"
+    },
+    "clanLevel": 21,
+    "clanPoints": 41480,
+    "clanBuilderBasePoints": 35169,
+    "clanCapitalPoints": 3079,
+    "capitalLeague": {
+        "name": "Master League I"
+    },
+    "requiredTrophies": 3200,
+    "warFrequency": "always",
+    "warWinStreak": 1,
+    "warWins": 186,
+    "warTies": 3,
+    "warLosses": 141,
+    "warLeague": {
+        "name": "Master League III"
+    },
+    "members": 42,
+    "memberList": [
         {
-            "tag": "#2QC2RU8RP",
-            "name": "Test",
-            "type": "open",
-            "badgeUrls": {
-                "medium": "https://api-assets.clashofclans.com/badges/200/F2qFbmVeNZbnvM3pqg5R9ec4EIly5PjNG0Wi5_YZF3c.png"
-            },
-            "clanLevel": 5,
-            "clanPoints": 15731,
-            "capitalLeague": {
-                "name": "Unranked"
-            },
-            "warWinStreak": 0,
-            "warWins": 22,
-            "warTies": 1,
-            "warLosses": 5,
-            "warLeague": {
-                "name": "Gold League III"
-            },
-            "members": 24,
-            "labels": [
-                {
-                    "name": "Clan Wars",
-                    "iconUrls": {
-                        "medium": "https://api-assets.clashofclans.com/labels/128/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png"
-                    }
+            "name": "Toni",
+            "role": "admin",
+            "townHallLevel": 17,
+            "expLevel": 251,
+            "league": {
+                "name": "Legend League",
+                "iconUrls": {
+                    "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
                 }
-            ]
-        },
-        ...
-    ]
+            },
+            "trophies": 5137,
+            "builderBaseTrophies": 4117,
+            "donations": 118,
+            "donationsReceived": 638
+        }
+        
+    ],
+    "labels": [
+        {
+            "name": "Clan Wars",
+            "iconUrls": {
+                "medium": "https://api-assets.clashofclans.com/labels/128/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png"
+            }
+        }
+    ],
+    "requiredBuilderBaseTrophies": 2000,
+    "requiredTownhallLevel": 12,
+    "clanCapital": {
+        "capitalHallLevel": 10,
+        "districts": [
+            {
+                "name": "Capital Peak",
+                "districtHallLevel": 10
+            }
+        ]
+    }
 }

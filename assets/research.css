@@ -1,0 +1,100 @@
+/* Style général */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana', sans-serif;
+    
+    background-size: cover;
+    background-attachment: fixed;
+    color: #ffffff; /* Texte blanc pour contraster avec le fond */
+}
+
+/* Conteneur principal */
+.clan-container {
+    background: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    border: 3px solid #f9a825; /* Bordure dorée pour un effet royal */
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre pour profondeur */
+}
+
+/* Logo principal */
+.clan-logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 150px; /* Taille du logo */
+    height: auto;
+    border: 3px solid #f9a825; /* Bordure dorée autour du logo */
+    border-radius: 50%; /* Cercle parfait */
+    box-shadow: 0 0 15px #f9a825; /* Éclat lumineux autour du logo */
+}
+
+/* Titre du clan */
+h2 {
+    font-size: 28px;
+    color: #f9a825; /* Doré */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Ombre portée */
+    margin: 10px 0;
+}
+
+/* Détails du clan */
+.clan-details {
+    font-size: 16px;
+    color: #fff; /* Blanc pur */
+    margin: 5px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Ombre légère */
+}
+
+/* Bouton Voir les membres */
+.members-btn {
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.members-btn:hover {
+    background: #ffd700; /* Couleur dorée plus claire */
+    transform: scale(1.1); /* Agrandissement au survol */
+}
+
+/* Section des icônes */
+.clan-labels {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.clan-labels img {
+    max-width: 60px;
+    height: auto;
+    border: 2px solid #f9a825; /* Bordure dorée */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre douce */
+}
+
+.clan-labels p {
+    font-size: 14px;
+    color: #f9a825; /* Texte doré */
+    margin: 5px 0 0 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Ombre légère */
+}
+
+/* Ligne de séparation entre les clans */
+hr {
+    border: 0;
+    height: 2px;
+    background: linear-gradient(to right, #f9a825, rgba(0, 0, 0, 0));
+    margin: 20px auto;
+}
