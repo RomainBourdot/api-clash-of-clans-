@@ -8,4 +8,6 @@ import (
 func ClansRoutes() {
 
 	http.HandleFunc("/clans", controllers.ListClans)
+
+	http.HandleFunc("/clans/details", controllers.DetailsClan)
 }

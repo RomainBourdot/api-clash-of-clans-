@@ -13,6 +13,7 @@
         {{range .Items}}
         <img class="clan-logo" src="{{.BadgeUrl.Medium}}" alt="Logo du clan">
         <h2>{{.Name}}</h2>
+        <a href="/clans/details?tag={{.Tag}}">Consulter</a>
         <p class="clan-details">Tag : {{.Tag}}</p>
         <p class="clan-details">Type : {{.TypeClan}}</p>
         <p class="clan-details">Niveau : {{.ClanLevel}}</p>

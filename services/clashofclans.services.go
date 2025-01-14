@@ -12,7 +12,7 @@ var _httpClient = http.Client{
 	Timeout: 5 * time.Second,
 }
 
-var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjUwYjdjM2Q5LTIzY2MtNDgwNi05NjhlLTEzOThiMDk5MDQxMCIsImlhdCI6MTczNjc1NDE1Mywic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.uMdtFNZjY9GxXMwOhR_bkteJYtxHZ_59GS55M2MiHLqsaXyZabWDLfhep0hktgR4ZB-XLcJdB7zPqKFV6e7Hhw"
+var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjZkYmE5NmRlLWYzNGItNDY2NC1hNDMxLTdmNzk2YjM2M2YwZSIsImlhdCI6MTczNjg0ODI4Nywic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.M1WVWzUwUm1h4O2d4sxqsT0gRYKsgrX8egcyVlAMtnEOwqb2tlZXpNace44iShSSKzUnSv8RYAFeJ3kqUv9FAA"
 
 type ShearchClan struct {
 	Items []struct {
@@ -90,66 +90,64 @@ func GetClanByQuery(query string) (ShearchClan, error) {
 }
 
 type DetailsClan struct {
-	Item []struct {
-		Tag         string `json:"tag"`
-		Name        string `json:"name"`
-		TypeClan    string `json:"type"`
-		Description string `json:"description"`
-		Location    struct {
-			Name string `json:"name"`
-		} `json:"location"`
-		BadgeUrl struct {
-			Medium string `json:"medium"`
-		} `json:"badgeUrls"`
-		ClanLevel             int `json:"clanLevel"`
-		ClanPoints            int `json:"clanPoints"`
-		ClanBuilderBasePoints int `json:"clanBuilderBasePoints"`
-		ClanCapitalPoints     int `json:"clanCapitalPoints"`
-		CapitalLeague         struct {
-			Name string `json:"name"`
-		} `json:"capitalLeague"`
-		RequiredTrophies int    `json:"requiredTrophies"`
-		WarFrequency     string `json:"warFrequency"`
-		WarWinStreak     int    `json:"warWinStreak"`
-		WarWins          int    `json:"warWins"`
-		WarTies          int    `json:"warTies"`
-		WarLosses        int    `json:"warLosses"`
-		Warleague        struct {
-			Name string `json:"name"`
-		} `json:"warLeague"`
-		Members     int `json:"members"`
-		MembersList []struct {
-			Name          string `json:"name"`
-			Role          string `json:"role"`
-			TownHallLevel int    `json:"townHallLevel"`
-			ExpLevel      int    `json:"expLevel"`
-			League        struct {
-				Name      string `json:"name"`
-				iconsUrls struct {
-					Medium string `json:"medium"`
-				} `json:"iconsUrls"`
-			} `json:"league"`
-			Trophies            int `json:"trophies"`
-			BuilderBaseTrophies int `json:"builderBaseTrophies"`
-			Donations           int `json:"donations"`
-			DonationsReceived   int `json:"donationsReceived"`
-		} `json:"members"`
-		Labels []struct {
-			Name     string `json:"name"`
-			IconUrls struct {
+	Tag         string `json:"tag"`
+	Name        string `json:"name"`
+	TypeClan    string `json:"type"`
+	Description string `json:"description"`
+	Location    struct {
+		Name string `json:"name"`
+	} `json:"location"`
+	BadgeUrl struct {
+		Medium string `json:"medium"`
+	} `json:"badgeUrls"`
+	ClanLevel             int `json:"clanLevel"`
+	ClanPoints            int `json:"clanPoints"`
+	ClanBuilderBasePoints int `json:"clanBuilderBasePoints"`
+	ClanCapitalPoints     int `json:"clanCapitalPoints"`
+	CapitalLeague         struct {
+		Name string `json:"name"`
+	} `json:"capitalLeague"`
+	RequiredTrophies int    `json:"requiredTrophies"`
+	WarFrequency     string `json:"warFrequency"`
+	WarWinStreak     int    `json:"warWinStreak"`
+	WarWins          int    `json:"warWins"`
+	WarTies          int    `json:"warTies"`
+	WarLosses        int    `json:"warLosses"`
+	Warleague        struct {
+		Name string `json:"name"`
+	} `json:"warLeague"`
+	Members     int `json:"members"`
+	MembersList []struct {
+		Name          string `json:"name"`
+		Role          string `json:"role"`
+		TownHallLevel int    `json:"townHallLevel"`
+		ExpLevel      int    `json:"expLevel"`
+		League        struct {
+			Name      string `json:"name"`
+			iconsUrls struct {
 				Medium string `json:"medium"`
-			} `json:"iconUrls"`
-		} `json:"labels"`
-		RequiredBuilderBaseTrophies int `json:"requiredBuilderBaseTrophies"`
-		RequieredTownHallLevel      int `json:"requiredTownHallLevel"`
-		ClanCapital                 struct {
-			CapitalHallLevel int `json:"capitalHallLevel"`
-			Districts        []struct {
-				Name              string `json:"name"`
-				DistrictHallLevel int    `json:"districtHallLevel"`
-			} `json:"districts"`
-		} `json:"clanCapital"`
-	} `json:"items"`
+			} `json:"iconsUrls"`
+		} `json:"league"`
+		Trophies            int `json:"trophies"`
+		BuilderBaseTrophies int `json:"builderBaseTrophies"`
+		Donations           int `json:"donations"`
+		DonationsReceived   int `json:"donationsReceived"`
+	} `json:"members"`
+	Labels []struct {
+		Name     string `json:"name"`
+		IconUrls struct {
+			Medium string `json:"medium"`
+		} `json:"iconUrls"`
+	} `json:"labels"`
+	RequiredBuilderBaseTrophies int `json:"requiredBuilderBaseTrophies"`
+	RequieredTownHallLevel      int `json:"requiredTownHallLevel"`
+	ClanCapital                 struct {
+		CapitalHallLevel int `json:"capitalHallLevel"`
+		Districts        []struct {
+			Name              string `json:"name"`
+			DistrictHallLevel int    `json:"districtHallLevel"`
+		} `json:"districts"`
+	} `json:"clanCapital"`
 }
 
 func GetClanByTag(tag string) (DetailsClan, error) {

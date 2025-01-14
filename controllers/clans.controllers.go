@@ -30,7 +30,7 @@ func DetailsClan(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Appelle le service pour récupérer les données du clan
-	clan, err := services.GetClanByTag(tag)
+	clan, err := services.GetClanByTag(tag[1:])
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Erreur lors de la récupération des données : %s", err.Error()), http.StatusInternalServerError)
 		return
@@ -38,5 +38,5 @@ func DetailsClan(w http.ResponseWriter, r *http.Request) {
 
 	// Chargement et rendue du template "clan" avec les données de l'API
 	// Envoie de la réponse au client
-	temp.Temp.ExecuteTemplate(w, "clan", clan)
+	temp.Temp.ExecuteTemplate(w, "details-clans", clan)
 }

@@ -1,0 +1,107 @@
+{{define "details-clans"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clan Details</title>
+    <link rel="stylesheet" href="/static/details-clans.css">
+</head>
+<body>
+    <header>
+        <h1>Clan Details</h1>
+    </header>
+
+    <main>
+
+        <section id="general-info">
+            <h2>General Information</h2>
+            <p><strong>Tag:</strong> <span id="clan-tag">{{.Tag}}</span></p>
+            <p><strong>Name:</strong> <span id="clan-name">{{.Name}}</span></p>
+            <p><strong>Type:</strong> <span id="clan-type">{{.TypeClan}}</span></p>
+            <p><strong>Description:</strong> <span id="clan-description">{{.Description}}</span></p>
+            <p><strong>Location:</strong> <span id="clan-location">{{.Location.Name}}</span></p>
+            <img id="badge-url" src="{{.BadgeUrl.Medium}}" alt="Clan Badge">
+        </section>
+
+        <section id="clan-stats">
+            <h2>Clan Statistics</h2>
+            <ul>
+                <li><strong>Clan Level:</strong> <span id="clan-level">{{.ClanLevel}}</span></li>
+                <li><strong>Clan Points:</strong> <span id="clan-points">{{.ClanPoints}}</span></li>
+                <li><strong>Builder Base Points:</strong> <span id="builder-base-points">{{.ClanBuilderBasePoints}}</span></li>
+                <li><strong>Capital Points:</strong> <span id="capital-points">{{.ClanCapitalPoints}}</span></li>
+                <li><strong>Required Trophies:</strong> <span id="required-trophies">{{.RequiredTrophies}}</span></li>
+                <li><strong>War Frequency:</strong> <span id="war-frequency">{{.WarFrequency}}</span></li>
+                <li><strong>War Wins:</strong> <span id="war-wins">{{.WarWins}}</span></li>
+                <li><strong>War Losses:</strong> <span id="war-losses">{{.WarLosses}}</span></li>
+                <li><strong>War Ties:</strong> <span id="war-ties">{{.WarTies}}</span></li>
+                <li><strong>War Streak:</strong> <span id="war-streak">{{.WarWinStreak}}</span></li>
+                <li><strong>Members:</strong> <span id="clan-members">{{.Members}}</span></li>
+            </ul>
+        </section>
+
+        <section id="clan-capital">
+            <h2>Clan Capital</h2>
+            <p><strong>Capital Hall Level:</strong> <span id="capital-hall-level">{{.ClanCapital.CapitalHallLevel}}</span></p>
+            <h3>Districts</h3>
+            <ul id="capital-districts">
+                {{range .ClanCapital.Districts}}
+                <li>{{.Name}} (Level {{.DistrictHallLevel}})</li>
+                {{end}}
+            </ul>
+        </section>
+
+        <section id="member-list">
+            <h2>Members</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Town Hall Level</th>
+                        <th>Exp Level</th>
+                        <th>League</th>
+                        <th>Trophies</th>
+                        <th>Donations</th>
+                        <th>Donations Received</th>
+                    </tr>
+                </thead>
+                <tbody id="members">
+                    {{range .MembersList}}
+                    <tr>
+                        <td>{{.Name}}</td>
+                        <td>{{.Role}}</td>
+                        <td>{{.TownHallLevel}}</td>
+                        <td>{{.ExpLevel}}</td>
+                        <td>{{.League.Name}}</td>
+                        <td>{{.Trophies}}</td>
+                        <td>{{.Donations}}</td>
+                        <td>{{.DonationsReceived}}</td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </section>
+
+        <section id="clan-labels">
+            <h2>Labels</h2>
+            <ul id="labels">
+                {{range .Labels}}
+                <li>
+                    <img src="{{.IconUrls.Medium}}" alt="{{.Name}}">
+                    {{.Name}}
+                </li>
+                {{end}}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Clan Info. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+{{end}}
