@@ -46,16 +46,26 @@
         </form>
         <div class="wrapper">
             {{range .Items}}
-            <h2>{{.Name}}</h2>
-            <img src="{{.BadgeUrl.Medium}}" alt="...">
-
-            {{range .Label}}
-            <p>{{.Name}}</p>
-            <img src="{{.IconUrls.Medium}}" alt="...">
+                <div class="clan-card">
+                    <img class="badge" src="{{.BadgeUrl.Medium}}" alt="Badge">
+                    <div class="clan-info">
+                        <div class="clan-tag">
+                            <h2>{{.Tag}}</h2>
+                        </div>
+                        <div class="icons">
+                            {{range .Label}}
+                                <img class="icon" src="{{.IconUrls.Medium}}" alt="Icon">
+                            {{end}}
+                        </div>
+                        <div class="consult-button">
+                            <a href="/clans/details?tag={{.Tag}}" >Consulter</a>
+                        </div>
+                    </div>
+                </div>
             {{end}}
-            <a href="/clans/details?tag={{.Tag}}">Consulter</a>
-        {{end}}
         </div>
+        
+
     </main>
     <footer>
         <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>

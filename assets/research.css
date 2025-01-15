@@ -48,25 +48,36 @@ h2 {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Ombre légère */
 }
 
-/* Bouton Voir les membres */
-.members-btn {
-    background-color: #1abc9c;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+.members-container {
+    display: inline-block; /* Pour que le conteneur prenne seulement la place nécessaire */
+    background-color: #1abc9c; /* Couleur de fond */
+    border-radius: 20px; /* Coins arrondis */
+    overflow: hidden; /* Assure que rien ne dépasse des bords arrondis */
+    text-align: center; /* Centre le contenu */
+    transition: transform 0.3s, background-color 0.3s; /* Animation fluide */
     cursor: pointer;
-    font-size: 1em;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+    margin: 20px auto; /* Centrage horizontal et espacement vertical */
 }
 
-.members-btn:hover {
-    background: #ffd700; /* Couleur dorée plus claire */
+.members-container:hover {
+    background-color: #ffd700; /* Couleur dorée au survol */
     transform: scale(1.1); /* Agrandissement au survol */
 }
 
-/* Section des icônes */
+.members-link {
+    display: block; /* Assure que l'ensemble du bouton est cliquable */
+    text-decoration: none; /* Supprime le soulignement */
+    color: #fff; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement interne */
+    font-size: 1em; /* Taille de la police */
+    font-weight: bold; /* Texte en gras */
+    transition: color 0.3s; /* Animation fluide */
+}
+
+.members-link:hover {
+    color: #fef9f9; 
+}
+
 .clan-labels {
     display: flex;
     justify-content: center;

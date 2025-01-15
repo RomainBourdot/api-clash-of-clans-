@@ -10,11 +10,10 @@ body {
     color: #333;
     background: center/cover no-repeat url('https://images.alphacoders.com/782/782653.png');
     height: 100vh;
-    max-width: 100vw;
     background-size: cover; 
     background-position: center; 
     background-attachment: fixed; 
-    height: 100vh;
+    max-width: 100vw;
 }
 /* Style pour le header */
 header {
@@ -86,13 +85,61 @@ main {
 
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
     width: 100%;
     color: white;
     margin-top: 50px;
 }
+
+.clan-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #16a085;
+    border-radius: 20px;
+}
+
+.clan-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.icons img {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 10px;
+}
+
+.consult-button a {
+    background-color: #f6a709; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    text-decoration: none; 
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; 
+    display: inline-block; 
+}
+
+
+.consult-button a:hover {
+    background-color: #e68a00;
+    transform: scale(1.1); 
+}
+
 
 .title-container h1 {
     font-size: 2.5em;

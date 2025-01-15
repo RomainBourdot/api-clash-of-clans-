@@ -13,27 +13,21 @@
         {{range .Items}}
         <img class="clan-logo" src="{{.BadgeUrl.Medium}}" alt="Logo du clan">
         <h2>{{.Name}}</h2>
-        <a href="/clans/details?tag={{.Tag}}">Consulter</a>
-        <p class="clan-details">Tag : {{.Tag}}</p>
         <p class="clan-details">Type : {{.TypeClan}}</p>
         <p class="clan-details">Niveau : {{.ClanLevel}}</p>
         <p class="clan-details">Points de clan : {{.ClanPoints}}</p>
-        <p class="clan-details">Ligue de capitale : {{.CapitalLeague.Name}}</p>
-        <p class="clan-details">Série de victoires en guerre : {{.WarWinStreak}}</p>
         <p class="clan-details">Guerres gagnées : {{.WarWins}}</p>
-        <p class="clan-details">Matchs nuls : {{.WarTies}}</p>
         <p class="clan-details">Guerres perdues : {{.WarLosses}}</p>
-        <p class="clan-details">Ligue de guerre : {{.Warleague.Name}}</p>
+        <p class="clan-details">Membres : {{.Members}}</p>
 
 
         <div class="members-container">
-            <p class="clan-details">Membres : {{.Members}}</p>
-            <button type="button" class="members-btn" id="Members-toggle">Membres</button>
+            <a href="/clans/details?tag={{.Tag}}" class="members-link">Détails du Clan</a>
         </div>
         
 
         <div class="clan-labels">
-            {{range .Label}}
+            {{range .Label}}    
             <div>
                 <img src="{{.IconUrls.Medium}}" alt="{{.Name}}">
                 <p>{{.Name}}</p>
@@ -43,14 +37,6 @@
         <hr>
         {{end}}
     </div>
-
-    <script>
-
-        const filterToggle = document.getElementById('Members-toggle');
-        filterToggle.addEventListener('click', () => {
-            alert('Affichage des membres');
-        });
-    </script>
 </body>
 </html>
 {{end}}

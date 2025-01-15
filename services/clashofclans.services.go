@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"time"
 )
 
@@ -51,7 +52,11 @@ type ErrorClient struct {
 }
 
 func GetClanByQuery(query string) (ShearchClan, error) {
-	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans?name=%s", query)
+	params := url.Values{}
+	params.Add("name", query)
+
+	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans?%s", params.Encode())
+	fmt.Println(url)
 
 	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
 	if reqErr != nil {
@@ -85,7 +90,6 @@ func GetClanByQuery(query string) (ShearchClan, error) {
 	if errDecode != nil {
 		return ShearchClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
 	}
-	fmt.Println("DATA ==> ", data)
 	return data, nil
 }
 
@@ -132,7 +136,7 @@ type DetailsClan struct {
 		BuilderBaseTrophies int `json:"builderBaseTrophies"`
 		Donations           int `json:"donations"`
 		DonationsReceived   int `json:"donationsReceived"`
-	} `json:"members"`
+	} `json:"memberList"`
 	Labels []struct {
 		Name     string `json:"name"`
 		IconUrls struct {
