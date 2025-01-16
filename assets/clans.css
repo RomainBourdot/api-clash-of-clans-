@@ -15,7 +15,7 @@ body {
     background-attachment: fixed; 
     max-width: 100vw;
 }
-/* Style pour le header */
+
 header {
     width: 100%;
     display: flex;
@@ -73,7 +73,6 @@ header .logo img {
     height: auto;
 }
 
-/* Style pour le main */
 main {
     display: flex;
     flex-direction: column;
@@ -147,7 +146,6 @@ main {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Style pour le formulaire de recherche */
 .search-container {
     display: flex;
     justify-content: center;
@@ -185,7 +183,6 @@ main {
     background-color: #e67e22;
 }
 
-/* Style pour les filtres */
 .filters {
     margin-top: 10px;
     text-align: left;
@@ -198,7 +195,6 @@ main {
     color: #333;
 }
 
-/* Bouton de recherche */
 .search-btn {
     background-color: #1abc9c;
     color: #fff;
@@ -215,7 +211,6 @@ main {
     background-color: #16a085;
 }
 
-/* Style pour le footer */
 footer {
     margin-top: auto;
     text-align: center;

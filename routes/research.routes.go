@@ -8,5 +8,4 @@ import (
 func Research() {
 
 	http.HandleFunc("/research", controllers.ResearchData)
-	/*http.HandleFunc("/research/members", controllers.MembersSearch)*/
 }

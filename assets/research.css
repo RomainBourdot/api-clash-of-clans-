@@ -1,4 +1,4 @@
-/* Style général */
+
 body {
     margin: 0;
     padding: 0;
@@ -6,72 +6,72 @@ body {
     
     background-size: cover;
     background-attachment: fixed;
-    color: #ffffff; /* Texte blanc pour contraster avec le fond */
+    color: #ffffff;
 }
 
-/* Conteneur principal */
+
 .clan-container {
-    background: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
-    border: 3px solid #f9a825; /* Bordure dorée pour un effet royal */
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #f9a825;
     border-radius: 10px;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre pour profondeur */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo principal */
+
 .clan-logo {
     display: block;
     margin: 0 auto 20px auto;
-    max-width: 150px; /* Taille du logo */
+    max-width: 150px;
     height: auto;
-    border: 3px solid #f9a825; /* Bordure dorée autour du logo */
-    border-radius: 50%; /* Cercle parfait */
-    box-shadow: 0 0 15px #f9a825; /* Éclat lumineux autour du logo */
+    border: 3px solid #f9a825;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #f9a825;
 }
 
-/* Titre du clan */
+
 h2 {
     font-size: 28px;
-    color: #f9a825; /* Doré */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Ombre portée */
+    color: #f9a825;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     margin: 10px 0;
 }
 
-/* Détails du clan */
+
 .clan-details {
     font-size: 16px;
-    color: #fff; /* Blanc pur */
+    color: #fff;
     margin: 5px 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Ombre légère */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .members-container {
-    display: inline-block; /* Pour que le conteneur prenne seulement la place nécessaire */
-    background-color: #1abc9c; /* Couleur de fond */
-    border-radius: 20px; /* Coins arrondis */
-    overflow: hidden; /* Assure que rien ne dépasse des bords arrondis */
-    text-align: center; /* Centre le contenu */
-    transition: transform 0.3s, background-color 0.3s; /* Animation fluide */
+    display: inline-block;
+    background-color: #1abc9c;
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
     cursor: pointer;
-    margin: 20px auto; /* Centrage horizontal et espacement vertical */
+    margin: 20px auto;
 }
 
 .members-container:hover {
-    background-color: #ffd700; /* Couleur dorée au survol */
-    transform: scale(1.1); /* Agrandissement au survol */
+    background-color: #ffd700;
+    transform: scale(1.1);
 }
 
 .members-link {
-    display: block; /* Assure que l'ensemble du bouton est cliquable */
-    text-decoration: none; /* Supprime le soulignement */
-    color: #fff; /* Couleur du texte */
-    padding: 10px 20px; /* Espacement interne */
-    font-size: 1em; /* Taille de la police */
-    font-weight: bold; /* Texte en gras */
-    transition: color 0.3s; /* Animation fluide */
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 .members-link:hover {
@@ -89,20 +89,20 @@ h2 {
 .clan-labels img {
     max-width: 60px;
     height: auto;
-    border: 2px solid #f9a825; /* Bordure dorée */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre douce */
+    border: 2px solid #f9a825;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .clan-labels p {
     font-size: 14px;
-    color: #f9a825; /* Texte doré */
+    color: #f9a825;
     margin: 5px 0 0 0;
     text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Ombre légère */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* Ligne de séparation entre les clans */
+
 hr {
     border: 0;
     height: 2px;
