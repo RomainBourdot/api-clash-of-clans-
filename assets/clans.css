@@ -98,8 +98,9 @@ main {
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: #16a085;
+    background-color: #6b3a08e8;
     border-radius: 20px;
+    opacity: 0.9;
 }
 
 .clan-info{
@@ -108,7 +109,9 @@ main {
     justify-content: center;
     align-items: center;
     gap: 15px;
+    color: #cc6c0c;
 }
+
 
 .icons{
     display: flex;
@@ -142,7 +145,7 @@ main {
 
 .title-container h1 {
     font-size: 2.5em;
-    color: #563c06;
+    color: #ca8907;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 

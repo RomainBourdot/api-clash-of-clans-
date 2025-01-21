@@ -1,67 +1,34 @@
-{
-    "tag": "#2QQCQY0PV",
-    "name": "Test",
-    "type": "inviteOnly",
-    "description": "We are the greatest ****** clan in the world and it isn’t even close. We’re at the tippity top of the mountain and we’re only halfway up. Even when we lose we hav***** better facial hair and good looks than our enemy. If you no join you have ***** **",
-    "location": {
-        "name": "United States"
-    },
-    "badgeUrls": {
-        "medium": "https://api-assets.clashofclans.com/badges/200/fXUc2t8gP9r1fVib77CcE3EUrAEvdp_Ss9wjn2FQRIQ.png"
-    },
-    "clanLevel": 21,
-    "clanPoints": 41480,
-    "clanBuilderBasePoints": 35169,
-    "clanCapitalPoints": 3079,
-    "capitalLeague": {
-        "name": "Master League I"
-    },
-    "requiredTrophies": 3200,
-    "warFrequency": "always",
-    "warWinStreak": 1,
-    "warWins": 186,
-    "warTies": 3,
-    "warLosses": 141,
-    "warLeague": {
-        "name": "Master League III"
-    },
-    "members": 42,
-    "memberList": [
+"items": [
         {
-            "name": "Toni",
-            "role": "admin",
-            "townHallLevel": 17,
-            "expLevel": 251,
-            "league": {
-                "name": "Legend League",
-                "iconUrls": {
-                    "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
-                }
+            "result": "win",
+            "endTime": "20250115T181745.000Z",
+            "teamSize": 25,
+            "attacksPerMember": 2,
+            "battleModifier": "none",
+            "clan": {
+                "tag": "#2QQCQY0PV",
+                "name": "Test",
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/fXUc2t8gP9r1fVib77CcE3EUrAEvdp_Ss9wjn2FQRIQ.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/fXUc2t8gP9r1fVib77CcE3EUrAEvdp_Ss9wjn2FQRIQ.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/fXUc2t8gP9r1fVib77CcE3EUrAEvdp_Ss9wjn2FQRIQ.png"
+                },
+                "clanLevel": 21,
+                "attacks": 36,
+                "stars": 68,
+                "destructionPercentage": 94.32,
+                "expEarned": 364
             },
-            "trophies": 5137,
-            "builderBaseTrophies": 4117,
-            "donations": 118,
-            "donationsReceived": 638
-        }
-        
-    ],
-    "labels": [
-        {
-            "name": "Clan Wars",
-            "iconUrls": {
-                "medium": "https://api-assets.clashofclans.com/labels/128/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png"
+            "opponent": {
+                "tag": "#RV20J92V",
+                "name": "Dokuz Işık",
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/Wfbh0DdNE86XxzvWd2Aiz5G6D6PDhCNxEBZWDMcMWmM.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/Wfbh0DdNE86XxzvWd2Aiz5G6D6PDhCNxEBZWDMcMWmM.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/Wfbh0DdNE86XxzvWd2Aiz5G6D6PDhCNxEBZWDMcMWmM.png"
+                },
+                "clanLevel": 22,
+                "stars": 64,
+                "destructionPercentage": 93.96
             }
-        }
-    ],
-    "requiredBuilderBaseTrophies": 2000,
-    "requiredTownhallLevel": 12,
-    "clanCapital": {
-        "capitalHallLevel": 10,
-        "districts": [
-            {
-                "name": "Capital Peak",
-                "districtHallLevel": 10
-            }
-        ]
-    }
-}
+        },
