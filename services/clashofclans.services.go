@@ -12,7 +12,7 @@ var _httpClient = http.Client{
 	Timeout: 5 * time.Second,
 }
 
-var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjI1Mzc1MmNhLWJlNzAtNGFkMy05MjQ3LTlhODY4MDFjNmQ3MiIsImlhdCI6MTczNzAxMzEyMywic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.559ErEhlQFDMErlWNKXyba1bHiZ4JYC3-GTpb3t-1if4_BKMBGZmx614nx8lSY3HGlr-1VvG383OGAm60rNXMg"
+var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjFkOTBhOTA0LTEwZmItNDI2Ni1iMTlhLWNjMmI0OTk5YmU2OCIsImlhdCI6MTc0MDQ2OTIzNiwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.WBbL7kFE6K4YgBKUQF_w7uvdJmNTeuGuA87QAx1sJskMaA4t4-iBpkAEJAAP_1plES5_g-ujVDCUPjxXFVtTwA"
 
 type ShearchClan struct {
 	Items []struct {
@@ -50,16 +50,32 @@ type ErrorClient struct {
 	Type    string `json:"type"`
 }
 
-func GetClanByQuery(query string) (ShearchClan, error) {
+func GetClanByQuery(query, minClanLevel, minMembers, warWins, warLosses, searchType string) (ShearchClan, error) {
 	params := url.Values{}
 	params.Add("name", query)
+
+	if minClanLevel != "" {
+		params.Add("minClanLevel", minClanLevel)
+	}
+	if minMembers != "" {
+		params.Add("minMembers", minMembers)
+	}
+	if warWins != "" {
+		params.Add("warWins", warWins)
+	}
+	if warLosses != "" {
+		params.Add("warLosses", warLosses)
+	}
+	if searchType != "" {
+		params.Add("type", searchType)
+	}
 
 	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans?%s", params.Encode())
 	fmt.Println(url)
 
 	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
 	if reqErr != nil {
-		return ShearchClan{}, fmt.Errorf("Erreur lors de l'initialisation de la réquête")
+		return ShearchClan{}, fmt.Errorf("Erreur lors de l'initialisation de la requête")
 	}
 
 	req.Header.Set("Authorization", _token)
@@ -67,12 +83,10 @@ func GetClanByQuery(query string) (ShearchClan, error) {
 
 	res, resErr := _httpClient.Do(req)
 	if resErr != nil {
-		return ShearchClan{}, fmt.Errorf("Erreur lors de l'envois de la réquête")
+		return ShearchClan{}, fmt.Errorf("Erreur lors de l'envoi de la requête")
 	}
 
 	defer res.Body.Close()
-
-	fmt.Println(res.StatusCode)
 
 	if res.StatusCode != http.StatusOK {
 		var data ErrorClient
@@ -81,7 +95,7 @@ func GetClanByQuery(query string) (ShearchClan, error) {
 			return ShearchClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
 		}
 		fmt.Println(data)
-		return ShearchClan{}, fmt.Errorf("Erreur lors de la récupération des clans : \n Code : %d\n Message : %s", res.StatusCode, res.Status)
+		return ShearchClan{}, fmt.Errorf("Erreur lors de la récupération des clans : Code : %d, Message : %s", res.StatusCode, res.Status)
 	}
 
 	var data ShearchClan
@@ -89,6 +103,7 @@ func GetClanByQuery(query string) (ShearchClan, error) {
 	if errDecode != nil {
 		return ShearchClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
 	}
+
 	return data, nil
 }
 

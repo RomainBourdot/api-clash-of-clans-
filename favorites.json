@@ -1,0 +1,32 @@
+{
+  "user1": [
+    {
+      "user_id": "user1",
+      "tag": "#2QVLJ8JJG",
+      "name": "NEUILLE Land",
+      "badge": "https://api-assets.clashofclans.com/badges/200/gmRrQNevaW0oI5PhHGlwvqsRIis229Yk2jhkX10j5_4.png",
+      "position": 1
+    },
+    {
+      "user_id": "user1",
+      "tag": "#2R0YRYQVY",
+      "name": "neuille",
+      "badge": "https://api-assets.clashofclans.com/badges/200/SB1qdC6BWWrG5HYMwZZtrsxYeNq7eGkfRZWbLBQFXck.png",
+      "position": 2
+    },
+    {
+      "user_id": "user1",
+      "tag": "#2R2RQ2C0Y",
+      "name": "neuille",
+      "badge": "https://api-assets.clashofclans.com/badges/200/DcHcgP14dK0OPmf_G77JtangGL7_5u6oAOWUbbXP8Yw.png",
+      "position": 3
+    },
+    {
+      "user_id": "user1",
+      "tag": "#2RY8YJJQL",
+      "name": "neuille",
+      "badge": "https://api-assets.clashofclans.com/badges/200/Z5WVFRIf-JVKcYNNswV6uX14fobCYqXOToOcm_t7isg.png",
+      "position": 4
+    }
+  ]
+}

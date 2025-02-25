@@ -1,0 +1,74 @@
+{{define "favorites"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Favoris</title>
+  <link rel="stylesheet" href="/static/favorites.css">
+</head>
+<body>
+  <header>
+    <h1>Mes Clans Favoris</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/clans">Clans</a></li>
+        <li><a href="/favorites">Favoris</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {{if .}}
+      <ul id="favorites-list">
+        {{range .}}
+          <li data-tag="{{.Tag}}">
+            <img src="{{.Badge}}" alt="Badge de {{.Name}}">
+            <span>{{.Name}}</span>
+            <form action="/favorites/remove" method="POST" style="display:inline;">
+              <input type="hidden" name="tag" value="{{.Tag}}">
+              <button type="submit">Retirer</button>
+            </form>
+          </li>
+        {{end}}
+      </ul>
+      <button id="saveOrder">Enregistrer l'ordre</button>
+    {{else}}
+      <p>Aucun favori pour le moment.</p>
+    {{end}}
+  </main>
+  <footer>
+    <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
+  </footer>
+  <!-- Inclusion de SortableJS depuis un fichier local ou un CDN -->
+  <script src="/static/js/Sortable.min.js"></script>
+  <script>
+    var el = document.getElementById('favorites-list');
+    if(el) {
+      var sortable = Sortable.create(el);
+
+      document.getElementById('saveOrder').addEventListener('click', function() {
+        var orderedTags = [];
+        el.querySelectorAll('li').forEach(function(li) {
+          orderedTags.push(li.getAttribute('data-tag'));
+        });
+        fetch('/favorites/reorder', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderedTags)
+        })
+        .then(response => {
+          if(response.ok) {
+            alert('Ordre mis à jour avec succès');
+          } else {
+            alert('Erreur lors de la mise à jour de l\'ordre');
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
+{{end}}

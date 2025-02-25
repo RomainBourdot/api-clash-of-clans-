@@ -22,6 +22,15 @@
             <p><strong>Description:</strong> <span id="clan-description">{{.Description}}</span></p>
             <p><strong>Location:</strong> <span id="clan-location">{{.Location.Name}}</span></p>
             <img id="badge-url" src="{{.BadgeUrl.Medium}}" alt="Clan Badge">
+            <!-- Bouton étoile pour ajouter aux favoris -->
+            <form action="/favorites/add" method="POST" style="display:inline;">
+              <input type="hidden" name="tag" value="{{.Tag}}">
+              <input type="hidden" name="name" value="{{.Name}}">
+              <input type="hidden" name="badge" value="{{.BadgeUrl.Medium}}">
+              <button type="submit" style="background: none; border: none; cursor: pointer;">
+                <img src="/static/images/star_icon.png" alt="Ajouter aux favoris" style="width:24px; height:24px;">
+              </button>
+            </form>
         </section>
 
         <section id="clan-stats">

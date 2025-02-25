@@ -6,10 +6,8 @@ import (
 	"os"
 )
 
-// Variable globale qui sert à stocker les templates chargés
 var Temp *template.Template
 
-// Méthode permettant de charger l'ensemble des templates
 func InitTemplates() {
 	temp, tempErr := template.ParseGlob("./templates/*.html")
 	if tempErr != nil {

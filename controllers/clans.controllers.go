@@ -9,7 +9,7 @@ import (
 
 func ListClans(w http.ResponseWriter, r *http.Request) {
 
-	listClans, err := services.GetClanByQuery("neuille")
+	listClans, err := services.GetClanByQuery("neuille", "", "", "", "", "")
 	if err != nil {
 		http.Redirect(w, r, fmt.Sprintf("/error?code=%d&message=%s", http.StatusPermanentRedirect, err.Error()), http.StatusPermanentRedirect)
 		return

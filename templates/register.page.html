@@ -1,0 +1,43 @@
+{{define "register"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="/static/register.css">
+</head>
+<body>
+  <header>
+    <h1>Inscription</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/login">Connexion</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {{if .}}
+      <!-- Afficher un message d'erreur en cas de problème -->
+      <p style="color:red;">{{.}}</p>
+    {{end}}
+    <form action="/register" method="POST">
+      <label for="username">Nom d'utilisateur :</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirm_password">Confirmer le mot de passe :</label>
+      <input type="password" id="confirm_password" name="confirm_password" required>
+
+      <button type="submit">S'inscrire</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
+{{end}}

@@ -1,0 +1,57 @@
+package enregistrement
+
+import (
+    "GroupieTracker/login"
+    "GroupieTracker/modele"
+    "GroupieTracker/templates"
+    "net/http"
+    "strings"
+)
+
+type Data struct {
+    IsRegistered  bool
+    UserConnected string
+    Err           bool
+}
+
+func registerController(w http.ResponseWriter, r http.Request) {
+
+    var data Data
+
+    data.IsRegistered = login.IsRegistered
+    data.UserConnected = login.UserConnected
+
+    if r.FormValue("exist") == "username" {
+        data.Err = true
+        templates.Temp.ExecuteTemplate(w, "register", data)
+        return
+    }
+
+    templates.Temp.ExecuteTemplate(w, "register", nil)
+}
+
+func registerTraitement(w http.ResponseWriter, rhttp.Request) {
+    username := r.FormValue("username")
+    password := r.FormValue("password")
+
+    if username == "" || password == "" {
+        http.Redirect(w, r, "/register", http.StatusSeeOther)
+        return
+    }
+
+    users := modele.JsonRead()
+
+    for _, elem := range users {
+        if strings.EqualFold(elem.Username, username) {
+            http.Redirect(w, r, "/register?exist=username", http.StatusSeeOther)
+            return
+        }
+    }
+
+    newUser := modele.User{Username: username, Password: password}
+
+    modele.JsonWrite(newUser)
+
+    http.Redirect(w, r, "/login", http.StatusSeeOther)
+
+}

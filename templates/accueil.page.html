@@ -1,60 +1,89 @@
 {{define "accueil"}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
-    <link rel="stylesheet" href="./static/accueil.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page d'accueil</title>
+  <link rel="stylesheet" href="/static/accueil.css">
 </head>
 <body>
-    <header>
-        <div class="right-header">
-            <ul>
-                <li><a href="/clans">Clans</a></li>
-                <li><a href="/about">À propos</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
+  <header>
+    <div class="left-header">
+      <!-- Bouton pour afficher le menu de compte -->
+      <button id="account-toggle">Compte</button>
+      <!-- Menu de compte caché par défaut -->
+      <div class="account-menu" id="account-menu" style="display: none;">
+        {{if .IsRegistered}}
+          <a href="/login?disconnect=true">
+            <h5>Déconnexion</h5>
+          </a>
+        {{else}}
+          <a href="/register">
+            <h5>Inscription</h5>
+          </a>
+          <a href="/login">
+            <h5>Connexion</h5>
+          </a>
+        {{end}}
+      </div>
+    </div>
+    <div class="right-header">
+      <ul>
+        <li><a href="/clans">Clans</a></li>
+        <li><a href="/about">À propos</a></li>
+        <li><a href="/favorites">Mes favoris</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="title-container">
+      <h1>Bienvenue sur l'API Clash of Clans !</h1>
+    </div>
+    <form action="/research" method="GET" class="search-form">
+      <div class="search-container">
+        <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
+        <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
+      </div>
+      <div class="filters" id="filters" style="display: none;">
+        <div class="filter-field">
+          <label for="minClanLevel">Niveau minimum du clan</label>
+          <input type="number" name="minClanLevel" id="minClanLevel" placeholder="Ex: 5">
         </div>
-    </header>  
-    <main>
-        <div class="title-container">
-            <h1>Bienvenue sur l'API Clash of Clans !</h1>
+        <div class="filter-field">
+          <label for="minMembers">Nombre minimum de membres</label>
+          <input type="number" name="minMembers" id="minMembers" placeholder="Ex: 10">
         </div>
-        
-        <form action="/research" method="GET">
-            <div class="search-container">
-                <div class="search-bar">
-                    <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
-                </div>
-                <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
-            </div>
+        <div class="filter-field">
+          <label for="warWins">Guerres gagnées minimum</label>
+          <input type="number" name="warWins" id="warWins" placeholder="Ex: 10">
+        </div>
+        <div class="filter-field">
+          <label for="warLosses">Guerres perdues maximum</label>
+          <input type="number" name="warLosses" id="warLosses" placeholder="Ex: 5">
+        </div>
+      </div>
+      <button type="submit" class="search-btn">Rechercher</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
+  </footer>
+  <script>
+    // Toggle pour les filtres
+    const filterToggle = document.getElementById('filter-toggle');
+    const filters = document.getElementById('filters');
+    filterToggle.addEventListener('click', () => {
+      filters.style.display = (filters.style.display === 'none' || filters.style.display === '') ? 'block' : 'none';
+    });
 
-            <div class="filters" id="filters" style="display: none;">
-                <label>
-                    <input type="radio" name="type" value="clans" checked> Clans
-                </label>
-                <label>
-                    <input type="radio" name="type" value="players"> Joueurs
-                </label>
-            </div>
-
-            <button type="submit" class="search-btn">Rechercher</button>
-        </form>
-    </main>
-    <footer>
-        <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
-    </footer>
-
-    <script>
-
-        const filterToggle = document.getElementById('filter-toggle');
-        const filters = document.getElementById('filters');
-
-        filterToggle.addEventListener('click', () => {
-            filters.style.display = filters.style.display === 'none' ? 'block' : 'none';
-        });
-    </script>
+    // Toggle pour le menu de compte
+    const accountToggle = document.getElementById('account-toggle');
+    const accountMenu = document.getElementById('account-menu');
+    accountToggle.addEventListener('click', () => {
+      accountMenu.style.display = (accountMenu.style.display === 'none' || accountMenu.style.display === '') ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
 {{end}}

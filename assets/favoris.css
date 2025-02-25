@@ -1,0 +1,49 @@
+.clan-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #6b3a08e8;
+    border-radius: 20px;
+    opacity: 0.9;   
+}
+
+.clan-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: #cc6c0c;
+}
+
+
+.icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.icons img {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 10px;
+}
+
+.consult-button a {
+    background-color: #f6a709; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    text-decoration: none; 
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; 
+    display: inline-block; 
+}
+
+
+.consult-button a:hover {
+    background-color: #e68a00;
+    transform: scale(1.1); 
+}
