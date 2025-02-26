@@ -17,8 +17,10 @@ type FavoriteClan struct {
 	UserID   string `json:"user_id"`
 	Tag      string `json:"tag"`
 	Name     string `json:"name"`
-	Badge    string `json:"badge"`
-	Position int    `json:"position"`
+	BadgeUrl struct {
+		Medium string `json:"medium"`
+	} `json:"badgeUrls"`
+	Position int `json:"position"`
 }
 
 func JsonRead() []User {

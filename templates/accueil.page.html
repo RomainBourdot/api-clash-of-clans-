@@ -11,22 +11,23 @@
   <header>
     <div class="left-header">
       <!-- Bouton pour afficher le menu de compte -->
-      <button id="account-toggle">Compte</button>
-      <!-- Menu de compte caché par défaut -->
-      <div class="account-menu" id="account-menu" style="display: none;">
-        {{if .IsRegistered}}
-          <a href="/login?disconnect=true">
-            <h5>Déconnexion</h5>
-          </a>
+        <img class="account-link" src="/static/image-icon.png" alt="Compte">
+        <!-- Menu de compte caché par défaut -->
+      <div class="account-menu">
+        {{if .}}
+        <a href="/login?disconnect=true">
+            <h5>Déconnection</h5>
+        </a>
         {{else}}
-          <a href="/register">
+        <a href="/register">
             <h5>Inscription</h5>
-          </a>
-          <a href="/login">
+        </a>
+        <span></span>
+        <a href="/login">
             <h5>Connexion</h5>
-          </a>
+        </a>
         {{end}}
-      </div>
+    </div>
     </div>
     <div class="right-header">
       <ul>
@@ -77,13 +78,8 @@
       filters.style.display = (filters.style.display === 'none' || filters.style.display === '') ? 'block' : 'none';
     });
 
-    // Toggle pour le menu de compte
-    const accountToggle = document.getElementById('account-toggle');
-    const accountMenu = document.getElementById('account-menu');
-    accountToggle.addEventListener('click', () => {
-      accountMenu.style.display = (accountMenu.style.display === 'none' || accountMenu.style.display === '') ? 'block' : 'none';
-    });
   </script>
 </body>
+<script src="/static/register.js"></script>
 </html>
 {{end}}

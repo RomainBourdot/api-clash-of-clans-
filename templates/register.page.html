@@ -18,22 +18,18 @@
     </nav>
   </header>
   <main>
-    {{if .}}
-      <!-- Afficher un message d'erreur en cas de problème -->
-      <p style="color:red;">{{.}}</p>
-    {{end}}
-    <form action="/register" method="POST">
-      <label for="username">Nom d'utilisateur :</label>
-      <input type="text" id="username" name="username" required>
-
-      <label for="password">Mot de passe :</label>
-      <input type="password" id="password" name="password" required>
-
-      <label for="confirm_password">Confirmer le mot de passe :</label>
-      <input type="password" id="confirm_password" name="confirm_password" required>
-
+    <form action="/register/traitement" method="POST" class="register-form">
+      <label for="username">
+          <h2>Inscription</h2>
+      </label>
+      <div class="input-container">
+          <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
+      </div>
+      <div class="input-container">
+          <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+      </div>
       <button type="submit">S'inscrire</button>
-    </form>
+  </form>
   </main>
   <footer>
     <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>

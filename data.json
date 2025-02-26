@@ -4,5 +4,23 @@
   "username": "romain",
   "password": "roro",
   "favorite": null
+ },
+ {
+  "id": 1,
+  "username": "rom",
+  "password": "rom",
+  "favorite": null
+ },
+ {
+  "id": 2,
+  "username": "tom",
+  "password": "test",
+  "favorite": null
+ },
+ {
+  "id": 3,
+  "username": "roro",
+  "password": "test",
+  "favorite": null
  }
 ]

@@ -9,19 +9,15 @@ import (
 	"groupie-tracker/models"
 )
 
-// favoritesFile est le chemin vers le fichier JSON qui stocke les favoris.
 var favoritesFile = "./favorites.json"
 
-// favoritesMutex permet d'assurer l'accès concurrent au fichier.
 var favoritesMutex sync.Mutex
 
-// FavoritesData représente la structure globale des favoris par utilisateur.
 type FavoritesData map[string][]models.FavoriteClan
 
-// loadFavorites lit le fichier JSON et retourne les données.
 func loadFavorites() (FavoritesData, error) {
 	if _, err := os.Stat(favoritesFile); os.IsNotExist(err) {
-		// Si le fichier n'existe pas, retourne une map vide.
+
 		return make(FavoritesData), nil
 	}
 
@@ -38,7 +34,6 @@ func loadFavorites() (FavoritesData, error) {
 	return favData, nil
 }
 
-// saveFavorites enregistre les données dans le fichier JSON.
 func saveFavorites(favData FavoritesData) error {
 	data, err := json.MarshalIndent(favData, "", "  ")
 	if err != nil {
@@ -119,37 +114,4 @@ func ListFavorites(userID string) ([]models.FavoriteClan, error) {
 		return nil, err
 	}
 	return favData[userID], nil
-}
-
-// UpdateFavoritesOrder met à jour l'ordre des favoris d'un utilisateur
-// en fonction de la liste ordonnée de tags fournie.
-func UpdateFavoritesOrder(userID string, orderedTags []string) error {
-	favoritesMutex.Lock()
-	defer favoritesMutex.Unlock()
-
-	favData, err := loadFavorites()
-	if err != nil {
-		return err
-	}
-
-	userFavs, exists := favData[userID]
-	if !exists {
-		return nil
-	}
-
-	// Crée une map pour retrouver rapidement chaque favori par son tag.
-	favMap := make(map[string]models.FavoriteClan)
-	for _, fav := range userFavs {
-		favMap[fav.Tag] = fav
-	}
-
-	newFavs := []models.FavoriteClan{}
-	for pos, tag := range orderedTags {
-		if fav, ok := favMap[tag]; ok {
-			fav.Position = pos + 1
-			newFavs = append(newFavs, fav)
-		}
-	}
-	favData[userID] = newFavs
-	return saveFavorites(favData)
 }

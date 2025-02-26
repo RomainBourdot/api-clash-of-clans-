@@ -1,10 +1,11 @@
 package routes
 
 import (
-	"groupie-tracker/controllers"
+	register "groupie-tracker/enregistrement"
 	"net/http"
 )
 
 func RegisterRoutes() {
-	http.HandleFunc("/register", controllers.RegisterController)
+	http.HandleFunc("/register", register.RegisterController)
+	http.HandleFunc("/register/traitement", register.RegisterTraitement)
 }

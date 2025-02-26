@@ -40,7 +40,7 @@ func LoginController(w http.ResponseWriter, r *http.Request) {
 	temp.Temp.ExecuteTemplate(w, "login", nil)
 }
 
-func loginTraitement(w http.ResponseWriter, r *http.Request) {
+func LoginTraitement(w http.ResponseWriter, r *http.Request) {
 
 	username := r.FormValue("username")
 	password := r.FormValue("password")
@@ -58,7 +58,7 @@ func loginTraitement(w http.ResponseWriter, r *http.Request) {
 				IsRegistered = true
 				UserConnected = username
 				Id = elem.Id
-				http.Redirect(w, r, "/home", http.StatusSeeOther)
+				http.Redirect(w, r, "/", http.StatusSeeOther)
 			} else {
 				http.Redirect(w, r, "/login?error=mdp", http.StatusSeeOther)
 				return

@@ -7,4 +7,5 @@ import (
 
 func loginRoutes() {
 	http.HandleFunc("/login", login.LoginController)
+	http.HandleFunc("/login/traitement", login.LoginTraitement)
 }

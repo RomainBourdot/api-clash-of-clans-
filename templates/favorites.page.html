@@ -1,0 +1,48 @@
+{{define "favorites"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Favoris</title>
+  <link rel="stylesheet" href="/static/favoris.css">
+</head>
+<body>
+  <header>
+    <h1>Mes Clans Favoris</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/clans">Clans</a></li>
+        <li><a href="/favorites">Favoris</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {{if .}}
+      <ul id="favorites-list" class="favorites-list">
+        {{range .}}
+          <li data-tag="{{.Tag}}">
+            <img class="badge-url" src="{{.BadgeUrl.Medium}}" alt="Badge">
+            <div class="clan-info">
+              <div class="clan-tag">
+                <h2>{{.Name}}</h2>
+              </div>
+            </div>
+            <!-- Bouton de suppression -->
+            <form action="/favorites/remove" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer ce favori ?');">
+              <input type="hidden" name="tag" value="{{.Tag}}">
+              <button type="submit">Retirer</button>
+            </form>
+          </li>
+        {{end}}
+    {{else}}
+      <p>Aucun favori pour le moment.</p>
+    {{end}}
+  </main>
+  <footer>
+    <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
+{{end}}

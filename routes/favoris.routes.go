@@ -6,8 +6,8 @@ import (
 )
 
 func FavoritesRoutes() {
-	http.HandleFunc("/favorites", controllers.ListFavoritesController)
+	http.HandleFunc("/favorites", controllers.FavoriteController)
+	http.HandleFunc("/favorites/list", controllers.ListFavoritesController)
 	http.HandleFunc("/favorites/add", controllers.AddFavoriteController)
 	http.HandleFunc("/favorites/remove", controllers.RemoveFavoriteController)
-	http.HandleFunc("/favorites/reorder", controllers.ReorderFavoritesController)
 }

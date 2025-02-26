@@ -1,49 +1,123 @@
-.clan-card{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    background-color: #6b3a08e8;
-    border-radius: 20px;
-    opacity: 0.9;   
-}
-
-.clan-info{
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-bottom: 60px; /* Pour laisser de la place au footer */
+  }
+  
+  /* Header */
+  header {
+    background-color: #f6a709;
+    color: #fff;
+    padding: 15px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+  }
+  
+  header h1 {
+    margin-bottom: 10px;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  /* Main */
+  main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  
+  /* Favorites list */
+  .favorites-list {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+  }
+  
+  .favorites-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
     align-items: center;
     gap: 15px;
-    color: #cc6c0c;
-}
-
-
-.icons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.icons img {
-    width: 10vh;
-    height: 10vh;
-    border-radius: 10px;
-}
-
-.consult-button a {
-    background-color: #f6a709; 
-    color: #fff; 
-    padding: 10px 20px; 
-    border-radius: 20px; 
-    text-decoration: none; 
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; 
-    display: inline-block; 
-}
-
-
-.consult-button a:hover {
-    background-color: #e68a00;
-    transform: scale(1.1); 
-}
+  }
+  
+  .favorites-list li img.badge-url {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f6a709;
+  }
+  
+  .favorites-list   li p {
+    margin: 5px 0;
+  }
+  
+  .favorites-list li p strong {
+    font-weight: bold;
+  }
+  
+  /* Bouton Retirer dans chaque item */
+  .favorites-list li form button {
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .favorites-list li form button:hover {
+    background-color: #d35400;
+  }
+  
+  /* Bouton pour enregistrer l'ordre */
+  button#saveOrder {
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  button#saveOrder:hover {
+    background-color: #16a085;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #f6a709;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  
