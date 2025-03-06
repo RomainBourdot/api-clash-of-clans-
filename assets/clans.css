@@ -1,18 +1,82 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* Styles communs pour la barre de recherche et les filtres (extraits de accueil.css) */
+.search-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #f6a709;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.filter-btn {
+    background-color: #f6a709;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background-color: #e67e22;
+}
+
+.filters {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.filter-field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.filter-field input, .filter-field select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #f6a709;
+    border-radius: 5px;
+}
+
+.search-btn {
+    margin-top: 15px;
+    background-color: #1abc9c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #16a085;
+}
+
+/* Styles existants de la page clans */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
     background: center/cover no-repeat url('https://images.alphacoders.com/782/782653.png');
     height: 100vh;
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     max-width: 100vw;
 }
 
@@ -27,7 +91,7 @@ header {
     height: 5vh;
 }
 
-.right-header{
+.right-header {
     width: 100%;
     margin-right: 70px;
 }
@@ -78,11 +142,10 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-sizing: border-box;
     margin-top: 20px;
 }
 
-.wrapper{
+.wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
@@ -92,7 +155,7 @@ main {
     margin-top: 50px;
 }
 
-.clan-card{
+.clan-card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,10 +163,10 @@ main {
     width: 100%;
     background-color: #6b3a08e8;
     border-radius: 20px;
-    opacity: 0.9;   
+    opacity: 0.9;
 }
 
-.clan-info{
+.clan-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,8 +175,7 @@ main {
     color: #cc6c0c;
 }
 
-
-.icons{
+.icons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,91 +189,23 @@ main {
 }
 
 .consult-button a {
-    background-color: #f6a709; 
-    color: #fff; 
-    padding: 10px 20px; 
-    border-radius: 20px; 
-    text-decoration: none; 
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; 
-    display: inline-block; 
+    background-color: #f6a709;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-
 
 .consult-button a:hover {
     background-color: #e68a00;
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
-
 
 .title-container h1 {
     font-size: 2.5em;
     color: #ca8907;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 10px;
-}
-
-.search-bar input {
-    width: 300px;
-    padding: 10px;
-    border: 2px solid #f6a709;
-    border-radius: 20px;
-    font-size: 1em;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.search-bar input:focus {
-    border-color: #1abc9c;
-}
-
-.filter-btn {
-    background-color: #f6a709;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
-}
-
-.filter-btn:hover {
-    background-color: #e67e22;
-}
-
-.filters {
-    margin-top: 10px;
-    text-align: left;
-}
-
-.filters label {
-    display: block;
-    margin: 5px 0;
-    font-size: 0.9em;
-    color: #333;
-}
-
-.search-btn {
-    background-color: #1abc9c;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-.search-btn:hover {
-    background-color: #16a085;
 }
 
 footer {

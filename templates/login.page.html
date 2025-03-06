@@ -9,9 +9,15 @@
 </head>
 <body>
   <header>
-    <h1>Connexion</h1>
+    <div class="header-container">
+      <h1>Connexion</h1>
+      <a href="/register" class="btn">S'inscrire</a>
+    </div>
   </header>
   <main>
+    <div>
+      <img src="/static/photo.Connexion.jpeg" alt="bachground" class="background">
+    </div>
     <form action="/login/traitement" method="POST">
       <label for="username">Nom d'utilisateur :</label>
       <input type="text" id="username" name="username" required>

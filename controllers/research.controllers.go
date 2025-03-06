@@ -15,8 +15,6 @@ func ResearchData(w http.ResponseWriter, r *http.Request) {
 	query := r.FormValue("research")
 	minClanLevel := r.FormValue("minClanLevel")
 	minMembers := r.FormValue("minMembers")
-	warWins := r.FormValue("warWins")
-	warLosses := r.FormValue("warLosses")
 	searchType := r.FormValue("type")
 
 	if query == "" {
@@ -24,7 +22,7 @@ func ResearchData(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	listClans, err := services.GetClanByQuery(query, minClanLevel, minMembers, warWins, warLosses, searchType)
+	listClans, err := services.GetClanByQuery(query, minClanLevel, minMembers, searchType)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Erreur lors de la récupération des données : %s", err.Error()), http.StatusInternalServerError)
 		return

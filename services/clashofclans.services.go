@@ -12,8 +12,13 @@ var _httpClient = http.Client{
 	Timeout: 5 * time.Second,
 }
 
-var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjdmMjhjNGMwLWZjNDktNGNhNS05MjFiLTMzNjViMjBjMjBjNyIsImlhdCI6MTc0MDU1ODQ4OCwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.8YpLDFqkW0hLBZffTk6yZOy4ppzQ49Hxxb4ZqlId3ZlJTr0j2YXDFpVX6cXE_svzfyBBIem8J64WQt47JGihng"
+var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImE2MDYyOGE2LWJkNjktNDM5MS1iZTlkLTAxMDgwMGQ3M2RlOSIsImlhdCI6MTc0MTI0NzI1MCwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.Tc0VaaE5_rwyJlFd-su7QtcbQgXRdIMvl1LulUKypCLkSTbz3wiwJfojQz37MJwmfuNMPFzteM__mZl39uSbBw"
 
+// ----------------------------
+// Fonctions pour la recherche de clans
+// ----------------------------
+
+// ShearchClan représente la réponse de l'API pour une recherche de clan.
 type ShearchClan struct {
 	Items []struct {
 		Tag      string `json:"tag"`
@@ -44,13 +49,15 @@ type ShearchClan struct {
 	} `json:"items"`
 }
 
+// ErrorClient est utilisé pour décoder les messages d'erreur de l'API.
 type ErrorClient struct {
 	Reason  string `json:"reason"`
 	Message string `json:"message"`
 	Type    string `json:"type"`
 }
 
-func GetClanByQuery(query, minClanLevel, minMembers, warWins, warLosses, searchType string) (ShearchClan, error) {
+// GetClanByQuery interroge l'API Clash of Clans pour rechercher des clans selon des critères.
+func GetClanByQuery(query, minClanLevel, minMembers, searchType string) (ShearchClan, error) {
 	params := url.Values{}
 	params.Add("name", query)
 
@@ -59,12 +66,6 @@ func GetClanByQuery(query, minClanLevel, minMembers, warWins, warLosses, searchT
 	}
 	if minMembers != "" {
 		params.Add("minMembers", minMembers)
-	}
-	if warWins != "" {
-		params.Add("warWins", warWins)
-	}
-	if warLosses != "" {
-		params.Add("warLosses", warLosses)
 	}
 	if searchType != "" {
 		params.Add("type", searchType)
@@ -107,6 +108,7 @@ func GetClanByQuery(query, minClanLevel, minMembers, warWins, warLosses, searchT
 	return data, nil
 }
 
+// DetailsClan représente la structure détaillée d'un clan.
 type DetailsClan struct {
 	Tag         string `json:"tag"`
 	Name        string `json:"name"`
@@ -168,6 +170,7 @@ type DetailsClan struct {
 	} `json:"clanCapital"`
 }
 
+// GetClanByTag récupère les détails d'un clan via son tag.
 func GetClanByTag(tag string) (DetailsClan, error) {
 	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans/%%23%s", tag)
 	fmt.Println(url)
@@ -206,4 +209,52 @@ func GetClanByTag(tag string) (DetailsClan, error) {
 	}
 	fmt.Println("DATA ==> ", data)
 	return data, nil
+}
+
+// ----------------------------
+// Fonctions pour la gestion des Guerres de Clans
+// ----------------------------
+
+// War représente une guerre de clans (données simulées).
+type War struct {
+	ID        string `json:"id"`
+	ClanTag   string `json:"clanTag"`
+	Opponent  string `json:"opponent"`
+	StartTime string `json:"startTime"`
+	EndTime   string `json:"endTime"`
+	Result    string `json:"result"`
+}
+
+// GetWars renvoie une liste simulée de guerres.
+func GetWars() ([]War, error) {
+	wars := []War{
+		{
+			ID:        "1",
+			ClanTag:   "#ABC123",
+			Opponent:  "Clan Opponent",
+			StartTime: "2025-03-01T10:00:00Z",
+			EndTime:   "2025-03-01T12:00:00Z",
+			Result:    "Victory",
+		},
+		{
+			ID:        "2",
+			ClanTag:   "#DEF456",
+			Opponent:  "Another Clan",
+			StartTime: "2025-03-02T14:00:00Z",
+			EndTime:   "2025-03-02T16:00:00Z",
+			Result:    "Defeat",
+		},
+	}
+	return wars, nil
+}
+
+// GetWarDetails renvoie les détails d'une guerre spécifique à partir de son ID.
+func GetWarDetails(id string) (War, error) {
+	wars, _ := GetWars()
+	for _, war := range wars {
+		if war.ID == id {
+			return war, nil
+		}
+	}
+	return War{}, fmt.Errorf("Guerre non trouvée")
 }

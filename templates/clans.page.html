@@ -1,10 +1,10 @@
 {{define "clans"}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collection clans</title>
+    <title>Collection des Clans</title>
     <link rel="stylesheet" href="/static/clans.css">
 </head>
 <body>
@@ -13,37 +13,51 @@
             <ul>
                 <li><a href="/clans">Clans</a></li>
                 <li><a href="/about">À propos</a></li>
-                <li><a href="/favoris">Mes favoris</a></li>
+                <li><a href="/favorites">Mes favoris</a></li>
+                <li><a href="/wars">Guerres</a></li>
             </ul>
         </div>
-    </header>  
+    </header>
     <main>
         <div class="title-container">
             <h1>Bienvenue sur l'API Clash of Clans !</h1>
         </div>
-        
-        <form action="/research" method="GET">
+        <!-- Barre de recherche et filtres identiques à ceux de la page d'accueil -->
+        <form action="/research" method="GET" class="search-form">
             <div class="search-container">
-                <div class="search-bar">
-                    <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
-                </div>
+                <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
                 <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
             </div>
-
             <div class="filters" id="filters" style="display: none;">
-                <label>
-                    <input type="checkbox" name="active" value="true"> Clans
-                </label>
-                <label>
-                    <input type="checkbox" name="war-focused" value="true"> Joueurs
-                </label>
-                <label>
-                    <input type="checkbox" name="friendly" value="true"> War
-                </label>
+                <div class="filter-field">
+                    <label for="minClanLevel">Niveau minimum du clan</label>
+                    <input type="number" name="minClanLevel" id="minClanLevel" placeholder="Ex: 5">
+                </div>
+                <div class="filter-field">
+                    <label for="minMembers">Nombre minimum de membres</label>
+                    <input type="number" name="minMembers" id="minMembers" placeholder="Ex: 10">
+                </div>
+                <div class="filter-field">
+                    <label for="type">Type du clan</label>
+                    <input type="text" name="type" id="type" placeholder="Ex: open, inviteOnly ou closed">
+                </div>
+                <!-- Filtres supplémentaires optionnels -->
+                <div class="filter-field">
+                    <label for="minClanPoints">Points minimum de clan</label>
+                    <input type="number" name="minClanPoints" id="minClanPoints" placeholder="Ex: 1000">
+                </div>
+                <div class="filter-field">
+                    <label for="warFrequency">Fréquence de guerre</label>
+                    <select name="warFrequency" id="warFrequency">
+                        <option value="">Tous</option>
+                        <option value="always">Toujours</option>
+                        <option value="rarely">Rarement</option>
+                    </select>
+                </div>
             </div>
-
             <button type="submit" class="search-btn">Rechercher</button>
         </form>
+        <!-- Liste des clans -->
         <div class="wrapper">
             {{range .Items}}
                 <div class="clan-card">
@@ -58,7 +72,7 @@
                             {{end}}
                         </div>
                         <div class="consult-button">
-                            <a href="/clans/details?tag={{.Tag}}" >Consulter</a>
+                            <a href="/clans/details?tag={{.Tag}}">Consulter</a>
                         </div>
                     </div>
                 </div>
@@ -68,14 +82,12 @@
     <footer>
         <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
     </footer>
-
     <script>
-
+        // Toggle pour afficher/masquer les filtres
         const filterToggle = document.getElementById('filter-toggle');
         const filters = document.getElementById('filters');
-
         filterToggle.addEventListener('click', () => {
-            filters.style.display = filters.style.display === 'none' ? 'block' : 'none';
+            filters.style.display = (filters.style.display === 'none' || filters.style.display === '') ? 'block' : 'none';
         });
     </script>
 </body>
