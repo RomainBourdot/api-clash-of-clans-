@@ -21,11 +21,13 @@
         <div class="title-container">
             <h1>Bienvenue sur l'API Clash of Clans !</h1>
         </div>
-        <form action="/research" method="GET" class="search-form">
+        <form action="/research" method="GET" class="search-form" id="search-form">
             <div class="search-container">
                 <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
                 <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
             </div>
+            <!-- Zone pour afficher le message d'erreur -->
+            <div id="search-error" style="color: red; margin-top: 5px;"></div>
             <div class="filters" id="filters" style="display: none;">
                 <div class="filter-field">
                     <label for="minClanLevel">Niveau minimum du clan</label>
@@ -63,6 +65,15 @@
                 </div>
             {{end}}
         </div>
+        <div class="pagination">
+            {{if gt .PrevPage 0}}
+              <a href="/clans?research={{.Query}}&page={{.PrevPage}}&limit={{.Limit}}">&laquo; Précédent</a>
+            {{end}}
+            <span>Page {{.CurrentPage}} sur {{.TotalPages}}</span>
+            {{if gt .NextPage 0}}
+              <a href="/clans?research={{.Query}}&page={{.NextPage}}&limit={{.Limit}}">Suivant &raquo;</a>
+            {{end}}
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
@@ -73,7 +84,9 @@
         filterToggle.addEventListener('click', () => {
             filters.style.display = (filters.style.display === 'none' || filters.style.display === '') ? 'block' : 'none';
         });
+
     </script>
+     <script src="/static/Validation.js"></script>
 </body>
 </html>
 {{end}}

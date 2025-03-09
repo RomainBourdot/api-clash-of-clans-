@@ -59,6 +59,19 @@ main {
   z-index: 1;
 }
 
+.login-message {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 300px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px; /* Ajout d'une marge pour espacer du formulaire */
+}
+
+
 form {
   background: rgba(0, 0, 0, 0.75);
   padding: 40px;

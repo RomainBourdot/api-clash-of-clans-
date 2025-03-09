@@ -219,6 +219,35 @@ main {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .pagination a,
+  .pagination span {
+    display: inline-block;
+    margin: 0 8px;
+    padding: 8px 16px;
+    border: 2px solid #f6a709;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #555454;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  }
+  
+  .pagination a:hover {
+    background-color: #f6a709;
+    color: #fff;
+    transform: scale(1.05);
+  }
+  
+  .pagination span {
+    background-color: #eaeaea;
+  }
+  
+
 footer {
     margin-top: auto;
     text-align: center;

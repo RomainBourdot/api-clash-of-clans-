@@ -39,11 +39,12 @@
     <div class="title-container">
       <h1>Bienvenue sur l'API Clash of Clans !</h1>
     </div>
-    <form action="/research" method="GET" class="search-form">
+    <form id="search-form" action="/research" method="GET" class="search-form">
       <div class="search-container">
           <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
           <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
       </div>
+      <div id="search-error" style="color: red; margin-top: 5px;"></div>
       <div class="filters" id="filters" style="display: none;">
           <div class="filter-field">
               <label for="minClanLevel">Niveau minimum du clan</label>
@@ -70,7 +71,9 @@
     filterToggle.addEventListener('click', () => {
       filters.style.display = (filters.style.display === 'none' || filters.style.display === '') ? 'block' : 'none';
     });
+
   </script>
+  <script src="/static/Validation.js"></script>
   <script src="/static/register.js"></script>
   <script src="/static/filtres.js"></script>
 </body>

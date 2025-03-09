@@ -21,7 +21,9 @@ func getCurrentUserID(r *http.Request) (string, error) {
 func FavoriteController(w http.ResponseWriter, r *http.Request) {
 	userID, err := getCurrentUserID(r)
 	if err != nil || userID == "" {
-		http.Error(w, "Utilisateur non authentifié", http.StatusUnauthorized)
+		// Redirige l'utilisateur vers la page de connexion avec un message d'information.
+		// Le message doit être encodé en URL.
+		http.Redirect(w, r, "/login?message=Veuillez+vous+connecter+pour+voir+vos+favoris", http.StatusSeeOther)
 		return
 	}
 
@@ -30,7 +32,6 @@ func FavoriteController(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, fmt.Sprintf("Erreur lors de la récupération des favoris: %v", err), http.StatusInternalServerError)
 		return
 	}
-
 	// Rendu du template "favorites" avec les données des favoris
 	err = temp.Temp.ExecuteTemplate(w, "favorites", favs)
 	if err != nil {
@@ -45,9 +46,11 @@ func AddFavoriteController(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Vérification de l'authentification
 	userID, err := getCurrentUserID(r)
 	if err != nil || userID == "" {
-		http.Error(w, "Utilisateur non authentifié", http.StatusUnauthorized)
+		// Redirection vers la page de connexion si non authentifié
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}
 

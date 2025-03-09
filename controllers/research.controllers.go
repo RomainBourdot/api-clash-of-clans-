@@ -15,7 +15,7 @@ func ResearchData(w http.ResponseWriter, r *http.Request) {
 	query := r.FormValue("research")
 	minClanLevel := r.FormValue("minClanLevel")
 	minMembers := r.FormValue("minMembers")
-	minClanPoints := r.FormValue("minClanPoints") // On récupère le point minimum du clan
+	minClanPoints := r.FormValue("minClanPoints")
 
 	if query == "" {
 		http.Error(w, "La recherche ne peut pas être vide", http.StatusBadRequest)
