@@ -15,14 +15,14 @@ func ResearchData(w http.ResponseWriter, r *http.Request) {
 	query := r.FormValue("research")
 	minClanLevel := r.FormValue("minClanLevel")
 	minMembers := r.FormValue("minMembers")
-	searchType := r.FormValue("type")
+	minClanPoints := r.FormValue("minClanPoints") // On récupère le point minimum du clan
 
 	if query == "" {
 		http.Error(w, "La recherche ne peut pas être vide", http.StatusBadRequest)
 		return
 	}
 
-	listClans, err := services.GetClanByQuery(query, minClanLevel, minMembers, searchType)
+	listClans, err := services.GetClanByQuery(query, minClanLevel, minMembers, minClanPoints)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Erreur lors de la récupération des données : %s", err.Error()), http.StatusInternalServerError)
 		return

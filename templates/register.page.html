@@ -8,9 +8,7 @@
   <link rel="stylesheet" href="/static/register.css">
 </head>
 <body>
-  <header>
-    <h1>Inscription</h1>
-    <nav>
+  </header>
       <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="/login">Connexion</a></li>
@@ -18,18 +16,16 @@
     </nav>
   </header>
   <main>
-    <form action="/register/traitement" method="POST" class="register-form">
-      <label for="username">
-          <h2>Inscription</h2>
-      </label>
-      <div class="input-container">
-          <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
-      </div>
-      <div class="input-container">
-          <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-      </div>
-      <button type="submit">S'inscrire</button>
-  </form>
+    <div>
+      <img src="/static/photo.Connexion.jpeg" alt="bachground" class="background">
+    </div>
+    <form action="/register/traitement" method="POST">
+      <label for="username">Nom d'utilisateur :</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Se connecter</button>
+    </form>
   </main>
   <footer>
     <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
@@ -37,3 +33,5 @@
 </body>
 </html>
 {{end}}
+
+

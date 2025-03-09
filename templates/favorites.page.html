@@ -14,7 +14,6 @@
       <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="/clans">Clans</a></li>
-        <li><a href="/favorites">Favoris</a></li>
       </ul>
     </nav>
   </header>
@@ -29,7 +28,6 @@
                 <h2>{{.Name}}</h2>
               </div>
             </div>
-            <!-- Bouton de suppression -->
             <form action="/favorites/remove" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer ce favori ?');">
               <input type="hidden" name="tag" value="{{.Tag}}">
               <button type="submit">Retirer</button>

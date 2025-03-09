@@ -10,9 +10,7 @@
 <body>
   <header>
     <div class="left-header">
-      <!-- Bouton pour afficher le menu de compte -->
-        <img class="account-link" src="/static/image-icon.png" alt="Compte">
-        <!-- Menu de compte caché par défaut -->
+      <img class="account-link" src="/static/image-icon.png" alt="Compte">
       <div class="account-menu">
         {{if .}}
         <a href="/login?disconnect=true">
@@ -27,7 +25,7 @@
             <h5>Connexion</h5>
         </a>
         {{end}}
-    </div>
+      </div>
     </div>
     <div class="right-header">
       <ul>
@@ -56,28 +54,25 @@
               <input type="number" name="minMembers" id="minMembers" placeholder="Ex: 10">
           </div>
           <div class="filter-field">
-              <label for="type">Type du clan</label>
-              <input type="text" name="type" id="type" placeholder="Ex: open, inviteOnly ou closed">
+              <label for="minClanPoints">Points minimum du clan</label>
+              <input type="number" name="minClanPoints" id="minClanPoints" placeholder="Ex: 1000">
           </div>
       </div>
       <button type="submit" class="search-btn">Rechercher</button>
-  </form>
-  
+    </form>
   </main>
   <footer>
     <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
   </footer>
   <script>
-    // Toggle pour les filtres
     const filterToggle = document.getElementById('filter-toggle');
     const filters = document.getElementById('filters');
     filterToggle.addEventListener('click', () => {
       filters.style.display = (filters.style.display === 'none' || filters.style.display === '') ? 'block' : 'none';
     });
-
   </script>
+  <script src="/static/register.js"></script>
+  <script src="/static/filtres.js"></script>
 </body>
-<script src="/static/register.js"></script>
-<script>src="/static/filtres.js"</script>
 </html>
 {{end}}

@@ -23,7 +23,7 @@ header .header-container {
   background: rgba(0, 0, 0, 0.6);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
   position: relative;
-  z-index: 3; /* Pour que le header reste devant l'image de fond */
+  z-index: 3; 
 }
 
 header .btn {

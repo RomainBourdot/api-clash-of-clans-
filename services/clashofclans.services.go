@@ -12,13 +12,12 @@ var _httpClient = http.Client{
 	Timeout: 5 * time.Second,
 }
 
-var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImE2MDYyOGE2LWJkNjktNDM5MS1iZTlkLTAxMDgwMGQ3M2RlOSIsImlhdCI6MTc0MTI0NzI1MCwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.Tc0VaaE5_rwyJlFd-su7QtcbQgXRdIMvl1LulUKypCLkSTbz3wiwJfojQz37MJwmfuNMPFzteM__mZl39uSbBw"
+var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjU3NDM1MTdjLWVmNTktNGEwMy05OTZhLTgzYjY3N2RkOGZhMSIsImlhdCI6MTc0MTUyNjY4OCwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjkxLjE2My43Ny42MiJdLCJ0eXBlIjoiY2xpZW50In1dfQ.6rgkM1aGOxmgMEIi6AdQ6zjOhZqSqdQ9iR2jHR0_P4WlnnfDEYyP3BUdt-iM_kuvbJ9XOLDRdrqaYPCL_QMw-g"
 
 // ----------------------------
 // Fonctions pour la recherche de clans
 // ----------------------------
 
-// ShearchClan représente la réponse de l'API pour une recherche de clan.
 type ShearchClan struct {
 	Items []struct {
 		Tag      string `json:"tag"`
@@ -57,7 +56,7 @@ type ErrorClient struct {
 }
 
 // GetClanByQuery interroge l'API Clash of Clans pour rechercher des clans selon des critères.
-func GetClanByQuery(query, minClanLevel, minMembers, searchType string) (ShearchClan, error) {
+func GetClanByQuery(query, minClanLevel, minMembers, minClanPoints string) (ShearchClan, error) {
 	params := url.Values{}
 	params.Add("name", query)
 
@@ -67,8 +66,8 @@ func GetClanByQuery(query, minClanLevel, minMembers, searchType string) (Shearch
 	if minMembers != "" {
 		params.Add("minMembers", minMembers)
 	}
-	if searchType != "" {
-		params.Add("type", searchType)
+	if minClanPoints != "" {
+		params.Add("minClanPoints", minClanPoints)
 	}
 
 	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans?%s", params.Encode())
@@ -86,7 +85,6 @@ func GetClanByQuery(query, minClanLevel, minMembers, searchType string) (Shearch
 	if resErr != nil {
 		return ShearchClan{}, fmt.Errorf("Erreur lors de l'envoi de la requête")
 	}
-
 	defer res.Body.Close()
 
 	if res.StatusCode != http.StatusOK {
@@ -104,7 +102,6 @@ func GetClanByQuery(query, minClanLevel, minMembers, searchType string) (Shearch
 	if errDecode != nil {
 		return ShearchClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
 	}
-
 	return data, nil
 }
 
@@ -207,7 +204,6 @@ func GetClanByTag(tag string) (DetailsClan, error) {
 	if errDecode != nil {
 		return DetailsClan{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
 	}
-	fmt.Println("DATA ==> ", data)
 	return data, nil
 }
 
