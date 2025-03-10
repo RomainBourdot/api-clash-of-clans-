@@ -2,119 +2,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clan Details</title>
-    <link rel="stylesheet" href="/static/details-clans.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clan Details</title>
+  <link rel="stylesheet" href="/static/details-clans.css">
 </head>
 <body>
-    <header>
-        <h1>Clan Details</h1>
-    </header>
+  <header>
+    <h1>Clan Details</h1>
+    <div class="header-right">
+      <a href="/accueil">Accueil</a>
+      <a href="/login">Connexion</a>
+    </div>
+  </header>
+  <main>
+    <section id="general-info">
+      <h2>General Information</h2>
+      <p><strong>Tag:</strong> <span id="clan-tag">{{.Clan.Tag}}</span></p>
+      <p><strong>Name:</strong> <span id="clan-name">{{.Clan.Name}}</span></p>
+      <p><strong>Type:</strong> <span id="clan-type">{{.Clan.TypeClan}}</span></p>
+      <p><strong>Description:</strong> <span id="clan-description">{{.Clan.Description}}</span></p>
+      <p><strong>Location:</strong> <span id="clan-location">{{.Clan.Location.Name}}</span></p>
+      <img id="badge-url" src="{{.Clan.BadgeUrl.Medium}}" alt="Clan Badge">
+      <!-- Bouton d'ajout aux favoris -->
+      <form action="/favorites/add" method="POST" style="display:inline;">
+        <input type="hidden" name="tag" value="{{.Clan.Tag}}">
+        <input type="hidden" name="name" value="{{.Clan.Name}}">
+        <input type="hidden" name="badge" value="{{.Clan.BadgeUrl.Medium}}">
+        <button type="submit" style="background: none; border: none; cursor: pointer;">
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="45px" height="45px" viewBox="0 0 24 24" fill="none">
+              <path d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </p>
+        </button>
+      </form>
+      <!-- Phrase explicative -->
+      <p style="font-size: 0.9rem; color: #000000; margin-top: 5px;">Cliquez sur l'étoile pour ajouter aux favoris</p>
+    </section>
 
-    <main>
+    <section id="clan-stats">
+      <h2>Clan Statistics</h2>
+      <ul>
+        <li><strong>Clan Level:</strong> <span id="clan-level">{{.Clan.ClanLevel}}</span></li>
+        <li><strong>Clan Points:</strong> <span id="clan-points">{{.Clan.ClanPoints}}</span></li>
+        <li><strong>Builder Base Points:</strong> <span id="builder-base-points">{{.Clan.ClanBuilderBasePoints}}</span></li>
+        <li><strong>Capital Points:</strong> <span id="capital-points">{{.Clan.ClanCapitalPoints}}</span></li>
+        <li><strong>Required Trophies:</strong> <span id="required-trophies">{{.Clan.RequiredTrophies}}</span></li>
+        <li><strong>War Frequency:</strong> <span id="war-frequency">{{.Clan.WarFrequency}}</span></li>
+        <li><strong>War Wins:</strong> <span id="war-wins">{{.Clan.WarWins}}</span></li>
+        <li><strong>War Losses:</strong> <span id="war-losses">{{.Clan.WarLosses}}</span></li>
+        <li><strong>War Ties:</strong> <span id="war-ties">{{.Clan.WarTies}}</span></li>
+        <li><strong>War Streak:</strong> <span id="war-streak">{{.Clan.WarWinStreak}}</span></li>
+        <li><strong>Members:</strong> <span id="clan-members">{{.Clan.Members}}</span></li>
+      </ul>
+    </section>
 
-        <section id="general-info">
-            <h2>General Information</h2>
-            <p><strong>Tag:</strong> <span id="clan-tag">{{.Tag}}</span></p>
-            <p><strong>Name:</strong> <span id="clan-name">{{.Name}}</span></p>
-            <p><strong>Type:</strong> <span id="clan-type">{{.TypeClan}}</span></p>
-            <p><strong>Description:</strong> <span id="clan-description">{{.Description}}</span></p>
-            <p><strong>Location:</strong> <span id="clan-location">{{.Location.Name}}</span></p>
-            <img id="badge-url" src="{{.BadgeUrl.Medium}}" alt="Clan Badge">
-            <form action="/favorites/add" method="POST" style="display:inline;">
-              <input type="hidden" name="tag" value="{{.Tag}}">
-              <input type="hidden" name="name" value="{{.Name}}">
-              <input type="hidden" name="badge" value="{{.BadgeUrl.Medium}}">
-              <button type="submit" style="background: none; border: none; cursor: pointer;">
-                <p> <svg xmlns="http://www.w3.org/2000/svg" width="45px" height="45px" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 21L12 12M12 12L15 15.3333M12 12L9 15.3333" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M20.5 7V13C20.5 16.7712 20.5 18.6569 19.3284 19.8284C18.1569 21 16.2712 21 12.5 21H11.5C7.72876 21 5.84315 21 4.67157 19.8284C3.5 18.6569 3.5 16.7712 3.5 13V7" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M2 5C2 4.05719 2 3.58579 2.29289 3.29289C2.58579 3 3.05719 3 4 3H20C20.9428 3 21.4142 3 21.7071 3.29289C22 3.58579 22 4.05719 22 5C22 5.94281 22 6.41421 21.7071 6.70711C21.4142 7 20.9428 7 20 7H4C3.05719 7 2.58579 7 2.29289 6.70711C2 6.41421 2 5.94281 2 5Z" stroke="#000" stroke-width="1.5"/>
-                    </svg>
-                </p>
-              </button>
-            </form>
-        </section>
+    <section id="clan-capital">
+      <h2>Clan Capital</h2>
+      <p><strong>Capital Hall Level:</strong> <span id="capital-hall-level">{{.Clan.ClanCapital.CapitalHallLevel}}</span></p>
+      <h3>Districts</h3>
+      <ul id="capital-districts">
+        {{range .Clan.ClanCapital.Districts}}
+        <li>{{.Name}} (Level {{.DistrictHallLevel}})</li>
+        {{end}}
+      </ul>
+    </section>
 
-        <section id="clan-stats">
-            <h2>Clan Statistics</h2>
-            <ul>
-                <li><strong>Clan Level:</strong> <span id="clan-level">{{.ClanLevel}}</span></li>
-                <li><strong>Clan Points:</strong> <span id="clan-points">{{.ClanPoints}}</span></li>
-                <li><strong>Builder Base Points:</strong> <span id="builder-base-points">{{.ClanBuilderBasePoints}}</span></li>
-                <li><strong>Capital Points:</strong> <span id="capital-points">{{.ClanCapitalPoints}}</span></li>
-                <li><strong>Required Trophies:</strong> <span id="required-trophies">{{.RequiredTrophies}}</span></li>
-                <li><strong>War Frequency:</strong> <span id="war-frequency">{{.WarFrequency}}</span></li>
-                <li><strong>War Wins:</strong> <span id="war-wins">{{.WarWins}}</span></li>
-                <li><strong>War Losses:</strong> <span id="war-losses">{{.WarLosses}}</span></li>
-                <li><strong>War Ties:</strong> <span id="war-ties">{{.WarTies}}</span></li>
-                <li><strong>War Streak:</strong> <span id="war-streak">{{.WarWinStreak}}</span></li>
-                <li><strong>Members:</strong> <span id="clan-members">{{.Members}}</span></li>
-            </ul>
-        </section>
+    <section id="member-list">
+      <h2>Members</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Town Hall Level</th>
+            <th>Exp Level</th>
+            <th>League</th>
+            <th>Trophies</th>
+            <th>Donations</th>
+            <th>Donations Received</th>
+          </tr>
+        </thead>
+        <tbody id="members">
+          {{range .Clan.MembersList}}
+          <tr>
+            <td>{{.Name}}</td>
+            <td>{{.Role}}</td>
+            <td>{{.TownHallLevel}}</td>
+            <td>{{.ExpLevel}}</td>
+            <td>{{.League.Name}}</td>
+            <td>{{.Trophies}}</td>
+            <td>{{.Donations}}</td>
+            <td>{{.DonationsReceived}}</td>
+          </tr>
+          {{end}}
+        </tbody>
+      </table>
+    </section>
 
-        <section id="clan-capital">
-            <h2>Clan Capital</h2>
-            <p><strong>Capital Hall Level:</strong> <span id="capital-hall-level">{{.ClanCapital.CapitalHallLevel}}</span></p>
-            <h3>Districts</h3>
-            <ul id="capital-districts">
-                {{range .ClanCapital.Districts}}
-                <li>{{.Name}} (Level {{.DistrictHallLevel}})</li>
-                {{end}}
-            </ul>
-        </section>
+    <section id="clan-labels">
+      <h2>Labels</h2>
+      <ul id="labels">
+        {{range .Labels}}
+        <li>
+          <img src="{{.IconUrls.Medium}}" alt="{{.Name}}">
+          {{.Name}}
+        </li>
+        {{end}}
+      </ul>
+    </section>
 
-        <section id="member-list">
-            <h2>Members</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Town Hall Level</th>
-                        <th>Exp Level</th>
-                        <th>League</th>
-                        <th>Trophies</th>
-                        <th>Donations</th>
-                        <th>Donations Received</th>
-                    </tr>
-                </thead>
-                <tbody id="members">
-                    {{range .MembersList}}
-                    <tr>
-                        <td>{{.Name}}</td>
-                        <td>{{.Role}}</td>
-                        <td>{{.TownHallLevel}}</td>
-                        <td>{{.ExpLevel}}</td>
-                        <td>{{.League.Name}}</td>
-                        <td>{{.Trophies}}</td>
-                        <td>{{.Donations}}</td>
-                        <td>{{.DonationsReceived}}</td>
-                    </tr>
-                    {{end}}
-                </tbody>
-            </table>
-        </section>
+    <!-- Bouton pour afficher le volet des guerres du clan -->
+    <button class="toggle-wars-btn" onclick="toggleWars()">Voir les guerres du clan</button>
+ 
+    <section id="wars-panel">
+        <h2>Guerres du clan</h2>
+        {{if .Wars.Items}}
+          <ul>
+            {{range .Wars.Items}}
+            <li>
+              <p><strong>Résultat :</strong> {{.Result}}</p>
+              <p><strong>Fin :</strong> {{.EndTime}}</p>
+              
+              <p><strong>Nom du clan :</strong> {{.Clan.Name}}</p>
+              <p><strong>Niveau :</strong> {{.Clan.ClanLevel}}</p>
+              
+              <p>
+                <strong>Badge :</strong>
+                <img src="{{.Clan.BadgeUrls.Medium}}" alt="Clan Badge" style="width:30px; height:auto;">
+              </p>
+      
+              <p><strong>Étoiles :</strong> {{.Clan.Stars}}</p>
+              <p><strong>Destruction :</strong> {{.Clan.DestructionPercentage}}%</p>
+            </li>
+            {{end}}
+          </ul>
+        {{else}}
+          <p>Aucune guerre trouvée pour ce clan.</p>
+        {{end}}
+      </section>
+      
+  </main>
 
-        <section id="clan-labels">
-            <h2>Labels</h2>
-            <ul id="labels">
-                {{range .Labels}}
-                <li>
-                    <img src="{{.IconUrls.Medium}}" alt="{{.Name}}">
-                    {{.Name}}
-                </li>
-                {{end}}
-            </ul>
-        </section>
-    </main>
+  <footer>
+    <p>&copy; 2025 Clan Info. All rights reserved.</p>
+  </footer>
 
-    <footer>
-        <p>&copy; 2025 Clan Info. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script>
+    // Fonction pour basculer l'affichage du volet des guerres
+    function toggleWars() {
+      var panel = document.getElementById("wars-panel");
+      panel.classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
 {{end}}

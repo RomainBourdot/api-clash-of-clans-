@@ -1,73 +1,4 @@
 
-.search-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.search-container input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #f6a709;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-.filter-btn {
-    background-color: #f6a709;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.filter-btn:hover {
-    background-color: #e67e22;
-}
-
-.filters {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.filter-field label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.filter-field input, .filter-field select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #f6a709;
-    border-radius: 5px;
-}
-
-.search-btn {
-    margin-top: 15px;
-    background-color: #1abc9c;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 1.1em;
-    cursor: pointer;
-}
-
-.search-btn:hover {
-    background-color: #16a085;
-}
-
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -144,6 +75,75 @@ main {
     align-items: center;
     text-align: center;
     margin-top: 20px;
+}
+
+.search-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #f6a709;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.filter-btn {
+    background-color: #f6a709;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background-color: #e67e22;
+}
+
+.filters {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.filter-field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.filter-field input {
+    width: 150px;        /* Réduit la largeur (vous pouvez ajuster la valeur) */
+    padding: 4px 6px;     /* Diminue le padding pour réduire la hauteur */
+    font-size: 0.9em;     /* Optionnel : réduit la taille de la police */
+    border: 1px solid #f6a709;
+    border-radius: 5px;
+}
+
+.search-btn {
+    margin-top: 15px;
+    background-color: #1abc9c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #16a085;
 }
 
 .wrapper {

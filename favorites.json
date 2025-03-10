@@ -7,7 +7,25 @@
       "badgeUrls": {
         "medium": "https://api-assets.clashofclans.com/badges/200/gmRrQNevaW0oI5PhHGlwvqsRIis229Yk2jhkX10j5_4.png"
       },
-      "position": 4
+      "position": 5
+    },
+    {
+      "user_id": "0",
+      "tag": "#2Q89CY2U0",
+      "name": "neuille",
+      "badgeUrls": {
+        "medium": "https://api-assets.clashofclans.com/badges/200/3mYyxE5U2JppibZMi1yxAZZZx2VOIICz5RYF-joO0xA.png"
+      },
+      "position": 7
+    },
+    {
+      "user_id": "0",
+      "tag": "#2Q0LCQYV9",
+      "name": "Tomy",
+      "badgeUrls": {
+        "medium": "https://api-assets.clashofclans.com/badges/200/JhUMjD-itCg6Mu-dsDZjKJzqaSMHJe-H_nQ87M5yY9A.png"
+      },
+      "position": 8
     }
   ],
   "1": [

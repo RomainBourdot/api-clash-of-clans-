@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"strings"
 	"time"
 )
 
@@ -71,7 +72,6 @@ func GetClanByQuery(query, minClanLevel, minMembers, minClanPoints string) (Shea
 	}
 
 	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans?%s", params.Encode())
-	fmt.Println(url)
 
 	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
 	if reqErr != nil {
@@ -170,7 +170,6 @@ type DetailsClan struct {
 // GetClanByTag récupère les détails d'un clan via son tag.
 func GetClanByTag(tag string) (DetailsClan, error) {
 	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans/%%23%s", tag)
-	fmt.Println(url)
 
 	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
 	if reqErr != nil {
@@ -210,47 +209,79 @@ func GetClanByTag(tag string) (DetailsClan, error) {
 // ----------------------------
 // Fonctions pour la gestion des Guerres de Clans
 // ----------------------------
-
-// War représente une guerre de clans (données simulées).
-type War struct {
-	ID        string `json:"id"`
-	ClanTag   string `json:"clanTag"`
-	Opponent  string `json:"opponent"`
-	StartTime string `json:"startTime"`
-	EndTime   string `json:"endTime"`
-	Result    string `json:"result"`
+// WarItem représente une guerre de clans avec les champs fournis par l'API.
+type WarItem struct {
+	Result           string `json:"result"`
+	EndTime          string `json:"endTime"`
+	TeamSize         int    `json:"teamSize"`
+	AttacksPerMember int    `json:"attacksPerMember"`
+	BattleModifier   string `json:"battleModifier,omitempty"`
+	Clan             struct {
+		Tag       string `json:"tag"`
+		Name      string `json:"name"`
+		BadgeUrls struct {
+			Medium string `json:"medium"`
+		} `json:"badgeUrls"`
+		ClanLevel             int     `json:"clanLevel"`
+		Attacks               int     `json:"attacks"`
+		Stars                 int     `json:"stars"`
+		DestructionPercentage float64 `json:"destructionPercentage"`
+		ExpEarned             int     `json:"expEarned"`
+	} `json:"clan"`
+	Opponent struct {
+		Tag       string `json:"tag"`
+		Name      string `json:"name"`
+		BadgeUrls struct {
+			Medium string `json:"medium"`
+		} `json:"badgeUrls"`
+		ClanLevel             int     `json:"clanLevel"`
+		Attacks               int     `json:"attacks"`
+		Stars                 int     `json:"stars"`
+		DestructionPercentage float64 `json:"destructionPercentage"`
+	} `json:"opponent"` // <-- IMPORTANT : champ "opponent"
 }
 
-// GetWars renvoie une liste simulée de guerres.
-func GetWars() ([]War, error) {
-	wars := []War{
-		{
-			ID:        "1",
-			ClanTag:   "#ABC123",
-			Opponent:  "Clan Opponent",
-			StartTime: "2025-03-01T10:00:00Z",
-			EndTime:   "2025-03-01T12:00:00Z",
-			Result:    "Victory",
-		},
-		{
-			ID:        "2",
-			ClanTag:   "#DEF456",
-			Opponent:  "Another Clan",
-			StartTime: "2025-03-02T14:00:00Z",
-			EndTime:   "2025-03-02T16:00:00Z",
-			Result:    "Defeat",
-		},
+type ClanWars struct {
+	Items []WarItem `json:"items"`
+}
+
+func GetWarsByClanTag(tag string) (ClanWars, error) {
+
+	cleanedTag := strings.TrimPrefix(tag, "#")
+
+	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans/%%23%s/warlog?limit=5", cleanedTag)
+	fmt.Println(url)
+
+	req, reqErr := http.NewRequest(http.MethodGet, url, nil)
+	if reqErr != nil {
+		return ClanWars{}, fmt.Errorf("Erreur lors de l'initialisation de la requête")
 	}
-	return wars, nil
-}
 
-// GetWarDetails renvoie les détails d'une guerre spécifique à partir de son ID.
-func GetWarDetails(id string) (War, error) {
-	wars, _ := GetWars()
-	for _, war := range wars {
-		if war.ID == id {
-			return war, nil
+	req.Header.Set("Authorization", _token)
+	req.Header.Set("Accept", "application/json")
+
+	res, resErr := _httpClient.Do(req)
+	if resErr != nil {
+		return ClanWars{}, fmt.Errorf("Erreur lors de l'envoi de la requête")
+	}
+	defer res.Body.Close()
+
+	fmt.Println(res.StatusCode)
+
+	if res.StatusCode != http.StatusOK {
+		var data ErrorClient
+		errDecode := json.NewDecoder(res.Body).Decode(&data)
+		if errDecode != nil {
+			return ClanWars{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
 		}
+		fmt.Println(data)
+		return ClanWars{}, fmt.Errorf("Erreur lors de la récupération des clans : \n Code : %d\n Message : %s", res.StatusCode, res.Status)
 	}
-	return War{}, fmt.Errorf("Guerre non trouvée")
+
+	var data ClanWars
+	errDecode := json.NewDecoder(res.Body).Decode(&data)
+	if errDecode != nil {
+		return ClanWars{}, fmt.Errorf("Erreur lors de la lecture de la réponse de l'API : %s", errDecode)
+	}
+	return data, nil
 }

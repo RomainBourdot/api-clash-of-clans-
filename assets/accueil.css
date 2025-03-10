@@ -136,11 +136,12 @@ main {
 }
 
 .filter-field input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #f6a709;
-    border-radius: 5px;
-} 
+  width: 150px;        /* Réduit la largeur (vous pouvez ajuster la valeur) */
+  padding: 4px 6px;     /* Diminue le padding pour réduire la hauteur */
+  font-size: 0.9em;     /* Optionnel : réduit la taille de la police */
+  border: 1px solid #f6a709;
+  border-radius: 5px;
+}
 
 .search-btn {
     margin-top: 15px;

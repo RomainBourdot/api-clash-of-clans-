@@ -1,4 +1,11 @@
-/* details-clans.css */
+/* Import d'une police d'inspiration médiévale */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* Base */
 body {
@@ -16,12 +23,35 @@ header {
     text-align: center;
     padding: 20px 0;
     border-bottom: 3px solid #e1a639;
+    position: relative; /* Pour le positionnement absolu de .header-right */
 }
 header h1 {
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 2px;
     text-shadow: 2px 2px 5px #000;
+}
+
+/* Nouvelle classe pour positionner Accueil et Connexion à droite */
+.header-right {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 15px;
+    font-size: 1.2rem;
+}
+
+/* Exemple de style pour les liens dans .header-right */
+.header-right a {
+    text-decoration: none;
+    color: #f6a709;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.header-right a:hover {
+    color: #fff;
 }
 
 /* Main */
@@ -149,6 +179,46 @@ section h2 {
     border: 2px solid #e1a639;
 }
 
+/* Volet déroulant pour les guerres du clan */
+#wars-panel {
+    display: none;
+    margin-top: 20px;
+    border: 2px solid #613b20;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #523119, #3a2310);
+    padding: 20px;
+  }
+  #wars-panel.active {
+    display: block;
+  }
+  #wars-panel ul {
+    list-style: none;
+    padding: 0;
+  }
+  #wars-panel li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #ffd700;
+  }
+  
+  /* Style pour le bouton toggle des guerres */
+  .toggle-wars-btn {
+    background-color: #1abc9c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  .toggle-wars-btn:hover {
+    background-color: #16a085;
+  }
+  
+  /* Reste de vos styles déjà existants... */
+  
+
 /* Footer */
 footer {
     text-align: center;
@@ -161,5 +231,3 @@ footer {
 footer p {
     margin: 0;
 }
-
-
