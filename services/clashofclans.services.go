@@ -13,7 +13,7 @@ var _httpClient = http.Client{
 	Timeout: 5 * time.Second,
 }
 
-var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjU3NDM1MTdjLWVmNTktNGEwMy05OTZhLTgzYjY3N2RkOGZhMSIsImlhdCI6MTc0MTUyNjY4OCwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjkxLjE2My43Ny42MiJdLCJ0eXBlIjoiY2xpZW50In1dfQ.6rgkM1aGOxmgMEIi6AdQ6zjOhZqSqdQ9iR2jHR0_P4WlnnfDEYyP3BUdt-iM_kuvbJ9XOLDRdrqaYPCL_QMw-g"
+var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImZjYjRlODkzLWM5Y2UtNDk4Yi04NTBiLWZjZjk0MmM3ODIxNSIsImlhdCI6MTc0MTU5MjIxNCwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjM3LjY0LjEyNy4xOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.uv56lDU0x0B1kCoQpkW_nu0-Xt9HeVxVs1jqw5MD9Cy3hpoAYVIIfhOZ2nEV2WKM8MTjeZeIijDQC1gD4QJO-w"
 
 // ----------------------------
 // Fonctions pour la recherche de clans
@@ -206,10 +206,6 @@ func GetClanByTag(tag string) (DetailsClan, error) {
 	return data, nil
 }
 
-// ----------------------------
-// Fonctions pour la gestion des Guerres de Clans
-// ----------------------------
-// WarItem représente une guerre de clans avec les champs fournis par l'API.
 type WarItem struct {
 	Result           string `json:"result"`
 	EndTime          string `json:"endTime"`
@@ -238,7 +234,7 @@ type WarItem struct {
 		Attacks               int     `json:"attacks"`
 		Stars                 int     `json:"stars"`
 		DestructionPercentage float64 `json:"destructionPercentage"`
-	} `json:"opponent"` // <-- IMPORTANT : champ "opponent"
+	} `json:"opponent"`
 }
 
 type ClanWars struct {
