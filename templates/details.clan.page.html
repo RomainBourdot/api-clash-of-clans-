@@ -24,7 +24,6 @@
       <p><strong>Description:</strong> <span id="clan-description">{{.Clan.Description}}</span></p>
       <p><strong>Location:</strong> <span id="clan-location">{{.Clan.Location.Name}}</span></p>
       <img id="badge-url" src="{{.Clan.BadgeUrl.Medium}}" alt="Clan Badge">
-      <!-- Bouton d'ajout aux favoris -->
       <form action="/favorites/add" method="POST" style="display:inline;">
         <input type="hidden" name="tag" value="{{.Clan.Tag}}">
         <input type="hidden" name="name" value="{{.Clan.Name}}">
@@ -37,7 +36,6 @@
           </p>
         </button>
       </form>
-      <!-- Phrase explicative -->
       <p style="font-size: 0.9rem; color: #000000; margin-top: 5px;">Cliquez sur l'étoile pour ajouter aux favoris</p>
     </section>
 
@@ -150,7 +148,6 @@
   </footer>
 
   <script>
-    // Fonction pour basculer l'affichage du volet des guerres
     function toggleWars() {
       var panel = document.getElementById("wars-panel");
       panel.classList.toggle("active");

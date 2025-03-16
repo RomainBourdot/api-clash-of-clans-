@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
-/* On s'assure que la page occupe toute la hauteur de la fenêtre */
 html, body {
     margin: 0;
     padding: 0;
@@ -8,17 +7,16 @@ html, body {
 }
 
 body {
-    display: flex;               /* Le body devient un conteneur flex */
-    flex-direction: column;      /* Les éléments s'empilent verticalement */
+    display: flex;            
+    flex-direction: column;    
     font-family: 'MedievalSharp', cursive;
     background: url('parchemin.webp') no-repeat center center fixed;
     background-size: cover;
     color: #2e1c0c;
 }
 
-/* HEADER */
 header {
-    background-color: transparent; /* On rend le header transparent */
+    background-color: transparent;
     padding: 20px;
     text-align: center;
 }
@@ -51,20 +49,17 @@ nav a:hover {
     color: #e1a639;
 }
 
-/* MAIN */
+
 main {
   flex: 1;
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  /* On retire le fond blanc et la bordure */
   background-color: transparent;
   border: none;
   border-radius: 0;
 }
 
-
-/* LISTE DES FAVORIS */
 .favorites-list {
     list-style: none;
     padding: 0;
@@ -75,7 +70,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: transparent; /* ou rgba(0,0,0,0) */
+    background-color: transparent;
     border: 2px solid #7a4f27;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -126,9 +121,9 @@ main {
     transform: scale(1.05);
 }
 
-/* FOOTER */
+
 footer {
-    background-color: transparent; /* Footer transparent */
+    background-color: transparent;
     padding: 15px;
     text-align: center;
     color: #f5d580;

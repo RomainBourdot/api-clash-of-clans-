@@ -26,7 +26,6 @@
                 <input type="text" placeholder="Recherchez un clan !" id="search-bar" name="research">
                 <button type="button" class="filter-btn" id="filter-toggle">Filtres</button>
             </div>
-            <!-- Zone pour afficher le message d'erreur -->
             <div id="search-error" style="color: red; margin-top: 5px;"></div>
             <div class="filters" id="filters" style="display: none;">
                 <div class="filter-field">
@@ -44,7 +43,6 @@
             </div>
             <button type="submit" class="search-btn">Rechercher</button>
         </form>
-        <!-- Liste des clans -->
         <div class="wrapper">
             {{range .Items}}
                 <div class="clan-card">

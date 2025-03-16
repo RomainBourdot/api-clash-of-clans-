@@ -93,21 +93,17 @@ func DetailsClan(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Récupération des détails du clan (en enlevant le '#' si nécessaire)
 	clan, err := services.GetClanByTag(tag[1:])
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Erreur lors de la récupération des données : %s", err.Error()), http.StatusInternalServerError)
 		return
 	}
 
-	// Récupération des guerres pour ce clan (en utilisant le tag complet tel que retourné par l'API)
 	wars, err := services.GetWarsByClanTag(clan.Tag)
 	if err != nil {
-		// En cas d'erreur, on peut continuer avec un tableau vide de guerres.
 		wars = services.ClanWars{}
 	}
 
-	// Passer les données au template via une map
 	data := map[string]interface{}{
 		"Clan": clan,
 		"Wars": wars,

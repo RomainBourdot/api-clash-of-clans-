@@ -23,8 +23,9 @@ header .header-container {
   background: rgba(0, 0, 0, 0.6);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
   position: relative;
-  z-index: 3; /* Pour que le header reste devant l'image de fond */
+  z-index: 3; 
 }
+
 
 header .btn {
   background: #d4af37;
@@ -36,19 +37,19 @@ header .btn {
   transition: background 0.3s ease;
 }
 
+
 header .btn:hover {
   background: #b38c2a;
 }
 
 main {
   flex: 1;
-  position: relative; /* Permet de positionner l'image en absolu dans le main */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Image de fond placée derrière le formulaire */
 .background {
   position: absolute;
   top: 0;
@@ -59,6 +60,18 @@ main {
   z-index: 1;
 }
 
+.login-message {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 300px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+
 form {
   background: rgba(0, 0, 0, 0.75);
   padding: 40px;
@@ -67,8 +80,8 @@ form {
   width: 300px;
   display: flex;
   flex-direction: column;
-  position: relative; /* Pour permettre le z-index */
-  z-index: 2; /* Au-dessus de l'image de fond */
+  position: relative; 
+  z-index: 2; 
 }
 
 form label {

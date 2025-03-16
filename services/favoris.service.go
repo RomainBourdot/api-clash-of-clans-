@@ -42,8 +42,6 @@ func saveFavorites(favData FavoritesData) error {
 	return ioutil.WriteFile(favoritesFile, data, 0644)
 }
 
-// AddFavorite ajoute un clan aux favoris pour un utilisateur.
-// Il assigne automatiquement la position suivante.
 func AddFavorite(fav models.FavoriteClan) error {
 	favoritesMutex.Lock()
 	defer favoritesMutex.Unlock()
@@ -54,7 +52,6 @@ func AddFavorite(fav models.FavoriteClan) error {
 	}
 
 	userFavs := favData[fav.UserID]
-	// Détermine la nouvelle position (dernier + 1)
 	newPosition := 1
 	if len(userFavs) > 0 {
 		lastFav := userFavs[len(userFavs)-1]
@@ -62,7 +59,6 @@ func AddFavorite(fav models.FavoriteClan) error {
 	}
 	fav.Position = newPosition
 
-	// Vérifie si le favori existe déjà et le met à jour, sinon l'ajoute.
 	updated := false
 	for i, existing := range userFavs {
 		if existing.Tag == fav.Tag {
@@ -79,7 +75,6 @@ func AddFavorite(fav models.FavoriteClan) error {
 	return saveFavorites(favData)
 }
 
-// RemoveFavorite supprime un favori pour un utilisateur via son tag.
 func RemoveFavorite(userID, tag string) error {
 	favoritesMutex.Lock()
 	defer favoritesMutex.Unlock()
@@ -104,7 +99,6 @@ func RemoveFavorite(userID, tag string) error {
 	return saveFavorites(favData)
 }
 
-// ListFavorites retourne la liste des favoris d'un utilisateur, triés par position.
 func ListFavorites(userID string) ([]models.FavoriteClan, error) {
 	favoritesMutex.Lock()
 	defer favoritesMutex.Unlock()

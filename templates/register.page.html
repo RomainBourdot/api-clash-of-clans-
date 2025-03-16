@@ -8,30 +8,34 @@
   <link rel="stylesheet" href="/static/register.css">
 </head>
 <body>
-  </header>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/login">Connexion</a></li>
-      </ul>
-    </nav>
+  <header>
+    <div class="header-container">
+      <nav>
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/login">Connexion</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
   <main>
     <div>
-      <img src="/static/photo.Connexion.jpeg" alt="bachground" class="background">
+      <img src="/static/photo.Connexion.jpeg" alt="background" class="background">
     </div>
     <form action="/register/traitement" method="POST">
       <label for="username">Nom d'utilisateur :</label>
       <input type="text" id="username" name="username" required>
+      
       <label for="password">Mot de passe :</label>
       <input type="password" id="password" name="password" required>
+      
       <button type="submit">Se connecter</button>
     </form>
   </main>
+
   <footer>
     <p>&copy; 2025 Clash of Clans API. Tous droits réservés.</p>
   </footer>
 </body>
 </html>
 {{end}}
-
-

@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     var el = document.getElementById('favorites-list');
     if (el) {
-      // Initialisation de SortableJS
       var sortable = Sortable.create(el, {
         animation: 150
       });
   
-      // Gestion du bouton "Enregistrer l'ordre"
       var saveOrderBtn = document.getElementById('saveOrder');
       if (saveOrderBtn) {
         saveOrderBtn.addEventListener('click', function() {

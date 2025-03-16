@@ -15,10 +15,6 @@ var _httpClient = http.Client{
 
 var _token string = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjUwMTVjNDc1LWYxZmYtNDA1MS1hMTlhLWY5YjA2YjcyZDAxMiIsImlhdCI6MTc0MjE0NTkwNCwic3ViIjoiZGV2ZWxvcGVyLzA5YTc2OTEyLTk3MWQtMjZhMy1hNDY3LTA2YTkxMjMyNzI5YiIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjkxLjE2My43Ny42MiJdLCJ0eXBlIjoiY2xpZW50In1dfQ.DThVZ7W8ouheykc1ufqJMJL1AVbReZ8a2ig5r09db1ry8Zou_YsGH9Hn1TDlIPmB8omQuRdCGMzykdkJDYtceg"
 
-// ----------------------------
-// Fonctions pour la recherche de clans
-// ----------------------------
-
 type ShearchClan struct {
 	Items []struct {
 		Tag      string `json:"tag"`
@@ -49,14 +45,12 @@ type ShearchClan struct {
 	} `json:"items"`
 }
 
-// ErrorClient est utilisé pour décoder les messages d'erreur de l'API.
 type ErrorClient struct {
 	Reason  string `json:"reason"`
 	Message string `json:"message"`
 	Type    string `json:"type"`
 }
 
-// GetClanByQuery interroge l'API Clash of Clans pour rechercher des clans selon des critères.
 func GetClanByQuery(query, minClanLevel, minMembers, minClanPoints string) (ShearchClan, error) {
 	params := url.Values{}
 	params.Add("name", query)
@@ -105,7 +99,6 @@ func GetClanByQuery(query, minClanLevel, minMembers, minClanPoints string) (Shea
 	return data, nil
 }
 
-// DetailsClan représente la structure détaillée d'un clan.
 type DetailsClan struct {
 	Tag         string `json:"tag"`
 	Name        string `json:"name"`
@@ -167,7 +160,6 @@ type DetailsClan struct {
 	} `json:"clanCapital"`
 }
 
-// GetClanByTag récupère les détails d'un clan via son tag.
 func GetClanByTag(tag string) (DetailsClan, error) {
 	url := fmt.Sprintf("https://api.clashofclans.com/v1/clans/%%23%s", tag)
 
