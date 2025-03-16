@@ -14,7 +14,7 @@ func AProposController(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Chargement du template HTML (adapter le chemin si nécessaire)
-	tmpl, err := template.ParseFiles("templates/a_propos.html")
+	tmpl, err := template.ParseFiles("templates/a_propos.page.html")
 	if err != nil {
 		http.Error(w, "Erreur lors du chargement du template", http.StatusInternalServerError)
 		return
@@ -26,11 +26,11 @@ func AProposController(w http.ResponseWriter, r *http.Request) {
 		Message string
 	}{
 		Title:   "À propos",
-		Message: "Bienvenue sur la page À propos de notre site !",
+		Message: "Bienvenue sur la page À propos de mon site !",
 	}
 
 	// Exécution du template avec les données
-	err = tmpl.Execute(w, data)
+	err = tmpl.ExecuteTemplate(w, "a-propos", data)
 	if err != nil {
 		http.Error(w, "Erreur lors de l'exécution du template", http.StatusInternalServerError)
 		return

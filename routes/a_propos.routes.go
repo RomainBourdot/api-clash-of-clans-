@@ -6,5 +6,5 @@ import (
 )
 
 func AProposRoutes() {
-	http.HandleFunc("/a-propos", controllers.AProposController)
+	http.HandleFunc("/a_propos", controllers.AProposController)
 }
